@@ -1,0 +1,182 @@
+# API surface
+
+## Query (64 fields)
+
+- `authQLogin(siteId:CommerceSiteId!, username:String!, password:String!, additionalFields:CustomerLoginInfoInput)` -> AuthResponse
+- `authQRefresh(siteId:CommerceSiteId!)` -> AuthResponse
+- `availableLanguages()` -> [LanguageEntry]
+- `commerceBasket(locale:String, siteId:CommerceSiteId!)` -> CommerceBasket
+- `commerceCatalog()` -> String
+- `commerceCategory(locale:String, categoryId:String!, siteId:CommerceSiteId!)` -> CommerceCategory
+- `commerceCategoryTree(locale:String, siteId:CommerceSiteId!)` -> [CommerceCategoryTreeElement!]
+- `commerceContentBrandCarousel(locale:String, siteId:CommerceSiteId!)` -> ContentBrandCategoryCarousel
+- `commerceContentExperience(locale:String, contentId:String!, siteId:CommerceSiteId!)` -> CommerceContentPage!
+- `commerceProductDetail(locale:String, productId:String!, siteId:CommerceSiteId!)` -> CommerceProductBase
+- `commerceProductPopularSearchTerms(locale:String!, siteId:CommerceSiteId!)` -> [String!]
+- `commerceProductSearch(explicit:Boolean, sortId:String, facets:[CommerceProductSearchFacetInput!], amount:Int, start:Int, categoryId:String, search:String, locale:String, siteId:CommerceSiteId!)` -> CommerceProductSearchResult
+- `commerceProductSearchSuggestions(count:Int, locale:String, siteId:CommerceSiteId!, searchPhrase:String!)` -> [String!]
+- `commerceProductsDetail(locale:String, productIds:[String!]!, siteId:CommerceSiteId!)` -> [CommerceProductBase]
+- `commerceRecommendation(locale:String, productIds:[String!], categoryIds:[String!], recommender:CommerceRecommender!, siteId:CommerceSiteId!)` -> CommerceRecommendationResponse
+- `commerceRecommendationRecommendersList(siteId:CommerceSiteId!)` -> CommerceRecommendationRecommenders
+- `commerceSiteInfo(preferredLocales:[String!], applicationOS:ApplicationOS, siteLocale:String, locale:String, country:CommerceCountry, siteId:CommerceSiteId)` -> CommerceSiteInfoResponse
+- `commerceWishList(locale:String, siteId:CommerceSiteId!)` -> CommerceWishList
+- `containerGet(containerId:String!)` -> NfcContainer
+- `containerList()` -> NfcContainerListResponse
+- `contentAdvertList(skip:Int, limit:Int, locale:String!)` -> AdvertListOutput!
+- `contentDiscoverCategoryList(skip:Int, limit:Int, locale:String!)` -> DiscoverCategoryListOutput!
+- `contentDiscoverDetail(id:String!, locale:String!)` -> DiscoverEntry!
+- `contentDiscoverList(regions:[String!], contentIds:[String!], productIds:[String!], skip:Int, limit:Int, locale:String!)` -> DiscoverListOutput!
+- `contentImageList(skip:Int, limit:Int, locale:String!)` -> ImageListOutput!
+- `contentListAllergenes(skip:Int, limit:Int, locale:String!)` -> DiscoverListAllergenesListOutput!
+- `contentListDevices(skip:Int, limit:Int, locale:String!)` -> DiscoverListDevicesListOutput!
+- `contentListDietaries(skip:Int, limit:Int, locale:String!)` -> DiscoverListDietariesListOutput!
+- `contentListFoodGroups(skip:Int, limit:Int, locale:String!)` -> DiscoverListFoodGroupsListOutput!
+- `contentListGoals(skip:Int, limit:Int, locale:String!)` -> DiscoverListGoalsListOutput!
+- `contentListMainIngredients(skip:Int, limit:Int, locale:String!)` -> DiscoverListMainIngredientsListOutput!
+- `contentListMealTypes(skip:Int, limit:Int, locale:String!)` -> DiscoverListMealTypesListOutput!
+- `contentLocaleList(skip:Int, limit:Int, textIds:[String!], locale:String!)` -> [LocaleListEntry!]!
+- `contentRecipeList(skip:Int, limit:Int, regions:[String!], recipeIds:[String!], locale:String!)` -> RecipeListOutput!
+- `devices(language:String!)` -> deviceListResponse
+- `devicesFind(language:String!, ids:[String!]!)` -> [deviceBase]
+- `devicesSearch(category:deviceCategory, page:Int, language:String!, search:String!)` -> deviceSearchResponse
+- `foodgroupList(locale:String!, bucket:FoodGroupBucket!)` -> [FoodGroup]
+- `freshandsave(cloudId:ID!)` -> FreshAndSave
+- `freshandsaveList(locale:String)` -> FreshAndSaveListing
+- `freshandsaveListStorage(showInactive:Boolean, showActive:Boolean)` -> [FreshAndSaveStorage!]
+- `freshandsaveRecents(order:FreshAndSaveSorting, limit:Int, locale:String)` -> FreshAndSaveListing
+- `getActivePromotions(siteId:CommerceSiteId!)` -> [CustomerPromotion!]
+- `getAppAdvertisements(platform:ApplicationOS, language:String!)` -> [AppAdvertisement]
+- `getListOfAvailbleSocialLoginProviders(siteId:CommerceSiteId!)` -> [String!]
+- `groupJoinHash(mode:GroupJoinHashMode, groupId:String!)` -> GroupJoinHashResponse
+- `hello()` -> String
+- `me()` -> MeResponse
+- `notificationsGuestNotificationFreshAndSaveList()` -> NotificationSchedule
+- `profile(siteId:CommerceSiteId!)` -> CustomerProfile
+- `profileAddressList(siteId:CommerceSiteId!)` -> [CustomerAddressFields!]
+- `recipeDetailed(id:String!, locale:String!)` -> RecipeDetailed!
+- `recipeList(locale:String!, tags:[String!], categories:[String!], allergens:[String!], dietaryPreferences:[String!], mealTypes:[String!], preparationTypes:[String!], query:String, limit:Int, offset:Int)` -> RecipeListResponse!
+- `recipeListFilters(locale:String!)` -> RecipeFilterResponse!
+- `recipeMarked()` -> RecipeMarked
+- `recipesRecommended(seed:Int, size:Int, cursor:String, consider:[RecipesRecommendedOptions!], region:String!, locale:String!)` -> RecipesSearchResults
+- `recipesRemoved(day:Int!, month:Int!, year:Int!, branch:String!)` -> RecipeRemoved
+- `recipesSearch(parser:RecipesSearchParser, facets:[RecipesSearchFacetInput], size:Int, cursor:String, query:String!, locale:String!)` -> RecipesSearchResults
+- `refreshToken(additionalFields:CustomerLoginInfoInput, token:String!)` -> ExtendedAuthResponse
+- `scheduledNotifications()` -> NotificationSchedule
+- `selectedRecipeList(locale:String!)` -> [RecipeDetailed!]
+- `settings(siteId:CommerceSiteId, type:SettingType)` -> SettingList
+- `shoppinglistContent(cloudId:String!)` -> ShoppingList
+- `shoppinglists()` -> ShoppingLists
+
+## Mutation (72 fields)
+
+- `analyzeFoodItemFromImage(locale:String!, image:String!)` -> AIResponse
+- `authLogin(siteId:CommerceSiteId!, username:String!, password:String!, additionalFields:CustomerLoginInfoInput)` -> AuthResponse
+- `authPasswordReset(siteId:CommerceSiteId!, username:String!, newPassword:String!, resetToken:String!)` -> AuthPasswordResetResponse
+- `authRefresh(siteId:CommerceSiteId!)` -> AuthResponse
+- `authRegister(siteId:CommerceSiteId!, firstName:String!, lastName:String!, username:String!, password:String!, additionalFields:CustomerProfileInput)` -> AuthResponse
+- `commerceAlterBasket(locale:String, basket:CommerceBasketInput, siteId:CommerceSiteId!)` -> CommerceBasket
+- `commerceCustomerContext(shopperData:[CommerceCustomerContextFieldInput!], siteId:CommerceSiteId!)` -> CommerceCustomerContextResponse
+- `commerceGenerateCookie(siteId:CommerceSiteId!)` -> CommerceCookieResponse
+- `commerceProductToBasket(bonuseLineItemId:String, locale:String, amountDifference:Int!, productId:String!, siteId:CommerceSiteId!)` -> CommerceBasket
+- `commerceProductToWishList(locale:String, amountDifference:Int!, productId:String!, siteId:CommerceSiteId!)` -> CommerceWishList
+- `commerceTrackAddToCart(products:[CommerceTrackCheckoutProduct!]!, siteId:CommerceSiteId!)` -> CommerceTrackResponse
+- `commerceTrackProductView(productId:String!, siteId:CommerceSiteId!)` -> CommerceTrackResponse
+- `commerceTrackRecommendationClick(recommender:CommerceRecommender!, recommendedId:String!, productId:String!, siteId:CommerceSiteId!)` -> CommerceTrackResponse
+- `commerceTrackRecommendationsView(recommender:CommerceRecommender!, recommendedId:String!, productIds:[String!]!, siteId:CommerceSiteId!)` -> CommerceTrackResponse
+- `containerRemove(containerId:String!)` -> NfcContainerRemoveResponse
+- `containerSave(info:NfcContainerSaveAdditionalInfo, storageType:StorageType!, size:String!, containerType:String!, containerId:String!)` -> NfcContainerSaveResponse
+- `containerUpdate(info:NfcContainerSaveAdditionalInfo, storageType:StorageType, size:String, containerType:String, containerId:String!)` -> NfcContainerSaveResponse
+- `devFlush()` -> Boolean
+- `devTestDatalake(year:Int!, month:Int!, day:Int!)` -> Boolean
+- `deviceAdd(language:String!, articleNumberGlobal:String!)` -> deviceAddResponse
+- `deviceRegister(userData:deviceRegisterUserInput!, purchaseDate:String!, cloudId:String!)` -> deviceRegisterResponse
+- `deviceRemove(cloudId:String!)` -> DeviceRemoveSuccessResponse
+- `exchangeCode(exchangeCode:String!, initiationCode:String!)` -> ExtendedAuthResponse
+- `foodgroupCreate(storable:[FoodGroupCreateStorable], position:Int, iconName:String, section:String, name:String!)` -> FoodGroupCreateResponse
+- `freshandsaveAddStorage(name:String!)` -> FreshAndSaveStorage
+- `freshandsaveCreate(type:StorageType, fillLevel:FreshAndSaveStorageFillLevel, storageCloudId:ID, sealed:Boolean, foodgroupId:String, storageplace:Storage, containerId:String, container:ContainerInput, description:String, expire:String!, name:String!)` -> FreshAndSaveCreateResponse
+- `freshandsaveDuplicate(cloudId:ID!)` -> FreshAndSaveDuplicateResponse
+- `freshandsaveModify(change:FreshAndSaveModifyInput!, cloudId:ID!)` -> FreshAndSaveModifyResponse
+- `freshandsaveModifyStorage(state:FreshAndSaveStorageState, name:String!, cloudId:ID!)` -> FreshAndSaveStorage
+- `freshandsaveRemoveStorage(cloudId:ID!)` -> FreshAndSaveRemoveStorageResponse
+- `getLinkToSocialProvider(provider:String!, siteId:CommerceSiteId!)` -> AuthSocialProviderLinkResponseDTO
+- `groupCreate(name:String!)` -> GroupCreateResponse
+- `groupJoin(hash:String!)` -> GroupJoinResponse
+- `groupLeave(groupId:String!)` -> GroupLeaveResponse
+- `groupModify(change:GroupModifyInput!, groupId:String!)` -> GroupModifyResponse
+- `meMarkForDelete()` -> MeMarkForDeleteResponse
+- `meModify(name:String)` -> MeModifyResponse
+- `notificationsAddDevice(token:String!, type:NotificationType!)` -> NotificationSuccessResponse
+- `notificationsGuestNotificationFreshAndSaveAdd(item:NotificationGuestFreshAndSaveItemInput!, id:String!)` -> NotificationSuccessResponse
+- `notificationsGuestNotificationFreshAndSaveRemove(id:String!)` -> NotificationSuccessResponse
+- `notificationsRemoveDevice(token:String!, type:NotificationType!)` -> NotificationSuccessResponse
+- `notificationsScheduleMarketing(localTime:TimeInput, users:[String!]!, date:DateYMDInput!, contentId:String!)` -> notificationsScheduleMarketingResponse
+- `notificationsSendNotification(data:[NotificationDataInput], options:NotificationOptionsInput, notification:NotificationGeneralInput!)` -> NotificationSuccessResponse
+- `notificationsSettingsSet(fooditemOn:[SettingNotificationFoodItem!], groupOn:[SettingNotificationGroup!], notificationTimes:[Int!])` -> NotificationSuccessResponse
+- `profileAddressCreate(name:String, address:CustomerAddressFieldsInput!, siteId:CommerceSiteId!)` -> CustomerAddressFields
+- `profileAddressModify(address:CustomerAddressFieldsInput!, name:String!, siteId:CommerceSiteId!)` -> CustomerAddressFields
+- `profileAddressRemove(name:String!, siteId:CommerceSiteId!)` -> Boolean
+- `profileAddressVerify(address:CustomerAddressFieldsInput!, name:String!, siteId:CommerceSiteId!)` -> Boolean
+- `profileModify(fields:CustomerProfileInput!, siteId:CommerceSiteId!)` -> CustomerProfile
+- `readAppAdvertisement(cloudId:String!)` -> Boolean!
+- `readPromotion(promotions:[CustomerPromotionReadStatus!]!)` -> [CustomerPromotion!]
+- `recipeMark(cloudIds:[String]!)` -> RecipeSuccessResponse
+- `recipeUnmark(cloudIds:[String]!)` -> RecipeSuccessResponse
+- `removeCustomerAccount()` -> GeneralBooleanSuccessResponse
+- `requestPasswordReset(locale:String, email:String!, site:CommerceSite!)` -> PasswordResetResponse
+- `requestUploadUrl(fileType:UploadUrlFileTypes!, usedFor:UploadUrlUsage!, cloudId:ID!)` -> UploadUrlRequestResponse
+- `sendCustomNotificationToCustomers(customersIds:[String!], customersNos:[String!], notificationScheduleOptions:NotificationScheduleOptions, notification:NotificationGeneralInput!, password:String!, siteId:CommerceSiteId!)` -> notificationsScheduleMarketingResponse
+- `settingSet(siteId:CommerceSiteId, type:SettingType, value:String, key:String!)` -> SettingSuccessResponse
+- `settingUnset(siteId:CommerceSiteId, type:SettingType, key:String!)` -> SettingSuccessResponse
+- `settingsSet(siteId:CommerceSiteId, settings:[SettingBunchEntry!]!)` -> SettingSuccessResponse
+- `settingsUnset(siteId:CommerceSiteId, settings:[SettingBunchEntry!]!)` -> SettingSuccessResponse
+- `shoppinglistAddCategory(name:String, cloudId:String!)` -> ShoppingListIdResponse
+- `shoppinglistAddEntries(entries:[ShoppingListEntryInput!]!, categoryCloudId:String!, cloudId:String!)` -> [ShoppingListEntry]
+- `shoppinglistAddEntry(entry:ShoppingListEntryInput!, categoryCloudId:String!, cloudId:String!)` -> ShoppingListIdResponse
+- `shoppinglistCreate(position:Int, name:String!)` -> ShoppingListIdResponse
+- `shoppinglistCreateOrModify(position:Int, categories:[ShoppingListCategoryWithEntriesInput!]!, name:String!, cloudId:String!)` -> ShoppingList
+- `shoppinglistModify(change:ShoppingListModifyListInput!, cloudId:String!)` -> ShoppingListSuccessResponse
+- `shoppinglistModifyCategory(change:ShoppingListCategoryInput!, categoryCloudId:String!, cloudId:String!)` -> ShoppingListSuccessResponse
+- `shoppinglistModifyEntry(change:ShoppingListModifyEntryInput!, entryCloudId:String!, cloudId:String!)` -> ShoppingListSuccessResponse
+- `shoppinglistRemove(cloudId:String!)` -> ShoppingListSuccessResponse
+- `shoppinglistRemoveCategory(categoryCloudId:String!, cloudId:String!)` -> ShoppingListSuccessResponse
+- `shoppinglistRemoveEntry(entryCloudId:String!, cloudId:String!)` -> ShoppingListSuccessResponse
+
+## Enums (36)
+
+- **AIFillLevel**: EMPTY, QUARTER, HALF, THREE_QUARTERS, FULL
+- **AppAdvertisementStatus**: NEW, SEEN
+- **ApplicationOS**: ANDROID, IOS
+- **AuthPasswordResetResult**: INVALID_LOGIN, INVALID_PASSWORD, INVALID_TOKEN, SUCCESS, UNKNOWN_ERROR
+- **CommerceAssetFormat**: GIF, JP2, JPG, JPEG, JXR, PNG
+- **CommerceAssetJpgQuality**: DEFAULT, Q100, Q90, Q80, Q70, Q60, Q50, Q40, Q30, Q20, Q10
+- **CommerceAssetPngCompression**: DEFAULT, C9, C8, C7, C6, C5, C4, C3, C2, C1
+- **CommerceAssetScaleOptionsMode**: CUT, FIT
+- **CommerceCountry**: BELGIUM, NETHERLANDS, LUXEMBURG, UNITED_KINGDOM, GERMANY, AUSTRIA, FRANCE, ITALY, NORWAY, SWEDEN, DENMARK, TURKEY, SPAIN, PORTUGAL, SWITZERLAND, POLAND, ROMANIA, SLOVAKIA, LITHUANIA, HUNGARY, BULGARIA, SLOVENIA, CZECH_REPUBLIC, ESTONIA, FINLAND, LATVIA, MALTA, MOLDOVA, UKRAINE, CANADA, UNITED_STATES_OF_AMERICA, BRAZIL, GUATEMALA, MEXICO, URUGUAY, CHILE, PARAGUAY, JAPAN, KOREA, TAIWAN, UNITED_ARAB_EMIRATES, SOUTH_AFRICA, GLOBAL
+- **CommerceProductLabels**: BLACK_FRIDAY, BONUS, BUY_ONE_GET_ONE, CAMPAIGN, CLEARANCE, COMING_SOON, DEAL_OF_THE_WEEK, DISCONTINUED, DOOR_CRASHER, ENGRAVING, EXCLUSIVE, FORGED_SET, FREE_ENGRAVING, GAS_ONLY, HOT_DEAL, INDUCTION_SAFE, LIMITED_STOCK, NEW, NONE, ONLINE_EXCLUSIVE, OPEN_BOX, PFAS_FREE, REFURBISHED, SPECIAL_PRICE, SPECIAL_PRICE_1, SPECIAL_PRICE_2, STAFF_PICK, STAFF_PICK_ALT, STARTER_SET, TOP_DEAL, TOP_GIFT, TOP_SELLER, PERCENT_DISCOUNT, CYBER_MONDAY, EOY, EXTRA25, OUTLET, PRE_ORDER, SINGLES_DAY
+- **CommerceRecommender**: PDP, OTHERS_ALSO_VIEWED, ALTERNATIVE_PRODUCTS, CART, FOR_CATEGORY, PRODUCT_IN_CATEGORY, ERROR, TOP_SELLERS, TOP_SELLERS_NEW, RECENTLY_VIEWED
+- **CommerceSite**: ZWILLING_GLOBAL, ZWILLING_BE, ZWILLING_CA, ZWILLING_DE, ZWILLING_DK, ZWILLING_ES, ZWILLING_FR, ZWILLING_IT, ZWILLING_JP, ZWILLING_TR, ZWILLING_UK, ZWILLING_US
+- **CommerceSiteId**: BE, CA, DE, DK, ES, FR, GLOBAL, IT, JP, TR, UK, US
+- **FoodGroupBucket**: ZWILLING, CUSTOM
+- **FreshAndSaveSorting**: CREATION_ASC, CREATION_DESC, NAME_ASC, NAME_DESC, FREQUENCY_ASC, FREQUENCY_DESC
+- **FreshAndSaveState**: OK, ARCHIVED, REMOVED
+- **FreshAndSaveStorageFillLevel**: EMPTY, LOW, MEDIUM, FULL
+- **FreshAndSaveStorageState**: ACTIVE, INACTIVE
+- **FreshAndSaveStorageType**: CUSTOM, PRESET
+- **GroupJoinHashMode**: PERMANENT, TEMPORARY
+- **NotificationType**: ANDROID_FIREBASE, APPLE_APNS
+- **PromoBannerType**: GLOBAL, HEADER, HOME
+- **RecipesRecommendedOptions**: DEVICES, ALLERGENES, DIATERY_PREFERENCES
+- **RecipesSearchParser**: SIMPLE, STRUCTURED
+- **SettingNotificationFoodItem**: EXPIRED, EXPIRES_SOON
+- **SettingNotificationGroup**: GROUP, DEVICES, FOODITEMS
+- **SettingType**: GENERAL, GOALS, DIATERY, ALLERGIES
+- **ShoppingListEntryState**: OK, CHECKED
+- **ShoppingListState**: OK, ARCHIVED, REMOVED
+- **Storage**: CUPBOARD, FREEZER, FRESHZONE, FRIDGE, SHELF, ZERODEGREEZONE
+- **StorageType**: UNKNOWN, FRESHANDSAVE, DRYSTORAGE
+- **UploadUrlFileTypes**: JPEG, PNG, WEBP
+- **UploadUrlUsage**: DEVICERECEIPT, FRESHANDSAVE, PROFILE, AI_FRESHANDSAVE
+- **deviceCategory**: FRESH_AND_SAVE, ELECTRICS, WARRANTY, STANDARD, GIFT_WITH_PURCHASE
+- **deviceProtocol**: SV001
+- **deviceType**: BLENDER, SOUSVIDE, SOUSVIDESTICK, TOASTER, KETTLE, SCALE, FRESHANDSAVE, COFFEEWORLD, BBQ, THERMOMETER, COOKING, GRILL, SMART

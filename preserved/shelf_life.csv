@@ -1,0 +1,52 @@
+cloudId,name_en,section,location,days
+4HD7ErEPKa5DJPlpjwEcIM,Beef (fresh),Meat,freezer,90
+4HD7ErEPKa5DJPlpjwEcIM,Beef (fresh),Meat,fridge,8
+4HD7ErEPKa5DJPlpjwEcIM,Beef (fresh),Meat,zerodegreezone,9
+5951bLLppivKv13CLtc5Xf,Vegetables (fresh),Vegetables & Fruits,freezer,90
+5951bLLppivKv13CLtc5Xf,Vegetables (fresh),Vegetables & Fruits,fridge,20
+5951bLLppivKv13CLtc5Xf,Vegetables (fresh),Vegetables & Fruits,zerodegreezone,22
+NCQizVdUaju362p0mci7j,Herbs (fresh),Vegetables & Fruits,freezer,90
+NCQizVdUaju362p0mci7j,Herbs (fresh),Vegetables & Fruits,fridge,10
+NCQizVdUaju362p0mci7j,Herbs (fresh),Vegetables & Fruits,zerodegreezone,11
+4VwL0PH4obFLRUSV9RDHVT,Seafood (fresh),Fish & Seafood,freezer,40
+4VwL0PH4obFLRUSV9RDHVT,Seafood (fresh),Fish & Seafood,fridge,3
+4VwL0PH4obFLRUSV9RDHVT,Seafood (fresh),Fish & Seafood,zerodegreezone,4
+5BBd8tF63OavTkUvKWZbW5,Lettuce (fresh),Vegetables & Fruits,fridge,10
+5BBd8tF63OavTkUvKWZbW5,Lettuce (fresh),Vegetables & Fruits,zerodegreezone,12
+5otQ4qBgtoSZg03mYgD6Pg,Pasta,Cereals,cupboard,365
+6YnLfZJikxpQfMEb8oe3vd,Cooked pasta and rice,Cooked,freezer,30
+6YnLfZJikxpQfMEb8oe3vd,Cooked pasta and rice,Cooked,fridge,7
+6YnLfZJikxpQfMEb8oe3vd,Cooked pasta and rice,Cooked,zerodegreezone,9
+7CncwIRfz1c7dognT2dq5B,Pork (fresh),Meat,freezer,90
+7CncwIRfz1c7dognT2dq5B,Pork (fresh),Meat,fridge,6
+7CncwIRfz1c7dognT2dq5B,Pork (fresh),Meat,zerodegreezone,7
+1K54WGNoqmr4w4inGjprAd,Poultry (fresh),Meat,freezer,90
+1K54WGNoqmr4w4inGjprAd,Poultry (fresh),Meat,fridge,6
+1K54WGNoqmr4w4inGjprAd,Poultry (fresh),Meat,zerodegreezone,7
+6JgXf1Yywjj5iFAugd9yOm,Rice,Cereals,cupboard,365
+LKNSgQRfbQACF4huBHG0b,Cooked Dishes,Cooked,freezer,35
+LKNSgQRfbQACF4huBHG0b,Cooked Dishes,Cooked,fridge,7
+LKNSgQRfbQACF4huBHG0b,Cooked Dishes,Cooked,zerodegreezone,9
+7Ff9vmtaqsceHrXwfXsIo0,Fruits (fresh),Vegetables & Fruits,freezer,90
+7Ff9vmtaqsceHrXwfXsIo0,Fruits (fresh),Vegetables & Fruits,fridge,10
+7Ff9vmtaqsceHrXwfXsIo0,Fruits (fresh),Vegetables & Fruits,zerodegreezone,12
+3FVUQxrT8qD1zgw1qlOrld,Fish (fresh),Fish & Seafood,freezer,40
+3FVUQxrT8qD1zgw1qlOrld,Fish (fresh),Fish & Seafood,fridge,6
+3FVUQxrT8qD1zgw1qlOrld,Fish (fresh),Fish & Seafood,zerodegreezone,7
+2NbvCmBeJouO4hGYVhWqYN,Sausage (fresh),Meat,freezer,50
+2NbvCmBeJouO4hGYVhWqYN,Sausage (fresh),Meat,fridge,10
+2NbvCmBeJouO4hGYVhWqYN,Sausage (fresh),Meat,zerodegreezone,11
+15gpHmQlIdWfDqMcLD5wGv,Hard cheese,Cheese,freezer,90
+15gpHmQlIdWfDqMcLD5wGv,Hard cheese,Cheese,fridge,39
+15gpHmQlIdWfDqMcLD5wGv,Hard cheese,Cheese,zerodegreezone,41
+2cJg4UEsxXHJXu8ZEQLtBA,Soft cheese,Cheese,freezer,90
+2cJg4UEsxXHJXu8ZEQLtBA,Soft cheese,Cheese,fridge,14
+2cJg4UEsxXHJXu8ZEQLtBA,Soft cheese,Cheese,zerodegreezone,15
+1eYaV78lo5EPxlMx4DHhJs,Desserts,"Baked Goods, Desserts & Snacks",freezer,70
+1eYaV78lo5EPxlMx4DHhJs,Desserts,"Baked Goods, Desserts & Snacks",fridge,10
+1eYaV78lo5EPxlMx4DHhJs,Desserts,"Baked Goods, Desserts & Snacks",zerodegreezone,11
+4MxgVIHuDJGfEzuZaUBE6H,Bread,"Baked Goods, Desserts & Snacks",cupboard,8
+4MxgVIHuDJGfEzuZaUBE6H,Bread,"Baked Goods, Desserts & Snacks",freezer,40
+6W0JMg8GEYtFBpUEVS0JHs,Legumes,Vegetables & Fruits,cupboard,70
+2q1XU1zQdIBeuYC1qdvDvC,White wine (opened),Beverages & Drinks,fridge,7
+2e5MTa5nED9a9rQ32etff0,Red Wine (opened),Beverages & Drinks,cupboard,7

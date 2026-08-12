@@ -1,0 +1,39 @@
+{
+  "name": "zwilling-food-organizer-cf",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker GraphQL backend for the ZWILLING Food Organizer",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "migrate:local": "wrangler d1 migrations apply DB --local",
+    "migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "cf-typegen": "wrangler types",
+    "admin:create-user": "bun scripts/admin-user.mjs",
+    "admin:reset-password": "bun scripts/admin-user.mjs",
+    "format": "biome format --write .",
+    "check": "biome check --write ."
+  },
+  "dependencies": {
+    "@escape.tech/graphql-armor-block-field-suggestions": "^3.0.1",
+    "@escape.tech/graphql-armor-cost-limit": "^2.4.3",
+    "@escape.tech/graphql-armor-max-aliases": "^2.6.2",
+    "@escape.tech/graphql-armor-max-depth": "^2.4.2",
+    "@escape.tech/graphql-armor-max-directives": "^2.3.1",
+    "@escape.tech/graphql-armor-max-tokens": "^2.5.1",
+    "@graphql-tools/schema": "10.0.38",
+    "graphql": "16.14.2",
+    "graphql-yoga": "5.21.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.8",
+    "@cloudflare/vitest-pool-workers": "0.21.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.10",
+    "wrangler": "4.120.1"
+  }
+}

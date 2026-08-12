@@ -1,0 +1,407 @@
+{
+ "source": "foodgroupList(bucket:ZWILLING)",
+ "locales": [
+  "en",
+  "de",
+  "fr",
+  "it",
+  "es",
+  "nl"
+ ],
+ "locations": [
+  "cupboard",
+  "freezer",
+  "fridge",
+  "zerodegreezone"
+ ],
+ "count": 21,
+ "groups": [
+  {
+   "cloudId": "4HD7ErEPKa5DJPlpjwEcIM",
+   "section": "Meat",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Beef (fresh)",
+    "de": "Rindfleisch (frisch)",
+    "fr": "Bœuf (frais)",
+    "it": "Manzo (fresco)",
+    "es": "Vacuno (fresco)",
+    "nl": "Rundsvlees (vers)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 8,
+    "zerodegreezone": 9
+   }
+  },
+  {
+   "cloudId": "5951bLLppivKv13CLtc5Xf",
+   "section": "Vegetables & Fruits",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Vegetables (fresh)",
+    "de": "Gemüse (frisch)",
+    "fr": "Légumes (frais)",
+    "it": "Verdure (fresche)",
+    "es": "Verduras (frescas)",
+    "nl": "Groenten (vers)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 20,
+    "zerodegreezone": 22
+   }
+  },
+  {
+   "cloudId": "NCQizVdUaju362p0mci7j",
+   "section": "Vegetables & Fruits",
+   "iconName": "zwillingRapier/Herbs",
+   "position": 0,
+   "names": {
+    "en": "Herbs (fresh)",
+    "de": "Kräuter (frisch)",
+    "fr": "Herbes (fraîches)",
+    "it": "Erbe aromatiche (fresche)",
+    "es": "Hierbas (frescas)",
+    "nl": "Kruiden (vers)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 10,
+    "zerodegreezone": 11
+   }
+  },
+  {
+   "cloudId": "4VwL0PH4obFLRUSV9RDHVT",
+   "section": "Fish & Seafood",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Seafood (fresh)",
+    "de": "Meeresfrüchte (frisch)",
+    "fr": "Fruits de mer (frais)",
+    "it": "Meeresfrüchte (frisch)",
+    "es": "Marisco (fresco)",
+    "nl": "Fisk og skaldyr (friske)"
+   },
+   "shelfLifeDays": {
+    "freezer": 40,
+    "fridge": 3,
+    "zerodegreezone": 4
+   }
+  },
+  {
+   "cloudId": "5BBd8tF63OavTkUvKWZbW5",
+   "section": "Vegetables & Fruits",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Lettuce (fresh)",
+    "de": "Blattsalate (frisch)",
+    "fr": "Laitue (fraîche)",
+    "it": "Lattuga (fresca)",
+    "es": "Lechuga (fresca)",
+    "nl": "Sla (vers)"
+   },
+   "shelfLifeDays": {
+    "fridge": 10,
+    "zerodegreezone": 12
+   }
+  },
+  {
+   "cloudId": "5otQ4qBgtoSZg03mYgD6Pg",
+   "section": "Cereals",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Pasta",
+    "de": "Nudeln",
+    "fr": "Pâtes",
+    "it": "Pasta",
+    "es": "Pasta",
+    "nl": "Pasta"
+   },
+   "shelfLifeDays": {
+    "cupboard": 365
+   }
+  },
+  {
+   "cloudId": "6YnLfZJikxpQfMEb8oe3vd",
+   "section": "Cooked",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Cooked pasta and rice",
+    "de": "Gekochte Pasta und Reis",
+    "fr": "Pâtes et riz cuites",
+    "it": "Pasta e riso cotti",
+    "es": "Pasta y arroz cocidos",
+    "nl": "Gekookte pasta en rijst"
+   },
+   "shelfLifeDays": {
+    "freezer": 30,
+    "fridge": 7,
+    "zerodegreezone": 9
+   }
+  },
+  {
+   "cloudId": "7CncwIRfz1c7dognT2dq5B",
+   "section": "Meat",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Pork (fresh)",
+    "de": "Schweinefleisch (frisch)",
+    "fr": "Porc (frais)",
+    "it": "Maiale (fresco)",
+    "es": "Cerdo (fresco)",
+    "nl": "Varkensvlees (vers)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 6,
+    "zerodegreezone": 7
+   }
+  },
+  {
+   "cloudId": "1K54WGNoqmr4w4inGjprAd",
+   "section": "Meat",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Poultry (fresh)",
+    "de": "Geflügel (frisch)",
+    "fr": "Volaille (fraîche)",
+    "it": "Pollame (fresco)",
+    "es": "Aves (fresco)",
+    "nl": "Gevogelte (vers)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 6,
+    "zerodegreezone": 7
+   }
+  },
+  {
+   "cloudId": "6JgXf1Yywjj5iFAugd9yOm",
+   "section": "Cereals",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "en": "Rice",
+    "de": "Reis",
+    "fr": "Riz",
+    "it": "Riso",
+    "es": "Arroz",
+    "nl": "Rijst"
+   },
+   "shelfLifeDays": {
+    "cupboard": 365
+   }
+  },
+  {
+   "cloudId": "LKNSgQRfbQACF4huBHG0b",
+   "section": "Cooked",
+   "iconName": "",
+   "position": 1,
+   "names": {
+    "en": "Cooked Dishes",
+    "de": "Gekochte Gerichte",
+    "fr": "Plats cuits",
+    "it": "Piatti cotti",
+    "es": "Platos preparados",
+    "nl": "Gekookte Gerechten"
+   },
+   "shelfLifeDays": {
+    "freezer": 35,
+    "fridge": 7,
+    "zerodegreezone": 9
+   }
+  },
+  {
+   "cloudId": "7Ff9vmtaqsceHrXwfXsIo0",
+   "section": "Vegetables & Fruits",
+   "iconName": "",
+   "position": 5,
+   "names": {
+    "en": "Fruits (fresh)",
+    "de": "Früchte (frisch)",
+    "fr": "Fruits (frais)",
+    "it": "Frutta (fresca)",
+    "es": "Fruta (fresca)",
+    "nl": "Fruit (vers)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 10,
+    "zerodegreezone": 12
+   }
+  },
+  {
+   "cloudId": "3FVUQxrT8qD1zgw1qlOrld",
+   "section": "Fish & Seafood",
+   "iconName": "zwillingRapier/Fish",
+   "position": 6,
+   "names": {
+    "en": "Fish (fresh)",
+    "de": "Fisch (frisch)",
+    "fr": "Poisson (frais)",
+    "it": "Pesce (fresco)",
+    "es": "Pescado (fresco)",
+    "nl": "Vis (vers)"
+   },
+   "shelfLifeDays": {
+    "freezer": 40,
+    "fridge": 6,
+    "zerodegreezone": 7
+   }
+  },
+  {
+   "cloudId": "2NbvCmBeJouO4hGYVhWqYN",
+   "section": "Meat",
+   "iconName": "",
+   "position": 10,
+   "names": {
+    "en": "Sausage (fresh)",
+    "de": "Wurst (frisch)",
+    "fr": "Saucisse (fraîche)",
+    "it": "Salsiccia (fresca)",
+    "es": "Salchichas (fresco)",
+    "nl": "Worst (vers)"
+   },
+   "shelfLifeDays": {
+    "freezer": 50,
+    "fridge": 10,
+    "zerodegreezone": 11
+   }
+  },
+  {
+   "cloudId": "15gpHmQlIdWfDqMcLD5wGv",
+   "section": "Cheese",
+   "iconName": "zwillingRapier/HardCheese",
+   "position": 11,
+   "names": {
+    "en": "Hard cheese",
+    "de": "Hartkäse",
+    "fr": "Fromage à pâte dure",
+    "it": "Formaggio stagionato",
+    "es": "Queso curado",
+    "nl": "Harde kaas"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 39,
+    "zerodegreezone": 41
+   }
+  },
+  {
+   "cloudId": "2cJg4UEsxXHJXu8ZEQLtBA",
+   "section": "Cheese",
+   "iconName": "",
+   "position": 12,
+   "names": {
+    "en": "Soft cheese",
+    "de": "Weichkäse",
+    "fr": "Fromage à pâte molle",
+    "it": "Formaggio fresco",
+    "es": "Queso tierno",
+    "nl": "Zachte kaas"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 14,
+    "zerodegreezone": 15
+   }
+  },
+  {
+   "cloudId": "1eYaV78lo5EPxlMx4DHhJs",
+   "section": "Baked Goods, Desserts & Snacks",
+   "iconName": "",
+   "position": 13,
+   "names": {
+    "en": "Desserts",
+    "de": "Dessert",
+    "fr": "Desserts",
+    "it": "Dolci",
+    "es": "Postres",
+    "nl": "Desserter"
+   },
+   "shelfLifeDays": {
+    "freezer": 70,
+    "fridge": 10,
+    "zerodegreezone": 11
+   }
+  },
+  {
+   "cloudId": "4MxgVIHuDJGfEzuZaUBE6H",
+   "section": "Baked Goods, Desserts & Snacks",
+   "iconName": "",
+   "position": 14,
+   "names": {
+    "en": "Bread",
+    "de": "Brot",
+    "fr": "Pain",
+    "it": "Pane",
+    "es": "Pan",
+    "nl": "Brood"
+   },
+   "shelfLifeDays": {
+    "cupboard": 8,
+    "freezer": 40
+   }
+  },
+  {
+   "cloudId": "6W0JMg8GEYtFBpUEVS0JHs",
+   "section": "Vegetables & Fruits",
+   "iconName": "",
+   "position": 15,
+   "names": {
+    "en": "Legumes",
+    "de": "Hülsenfrüchte",
+    "fr": "Café et légumineuses",
+    "it": "Caffè e legumi",
+    "es": "Café y legumbres",
+    "nl": "Koffiebonen en peulvruchten"
+   },
+   "shelfLifeDays": {
+    "cupboard": 70
+   }
+  },
+  {
+   "cloudId": "2q1XU1zQdIBeuYC1qdvDvC",
+   "section": "Beverages & Drinks",
+   "iconName": "zwillingRapier/Wine",
+   "position": 16,
+   "names": {
+    "en": "White wine (opened)",
+    "de": "Weißwein (geöffnet)",
+    "fr": "Vin blanc (ouvert)",
+    "it": "Vino bianco (aperto)",
+    "es": "Vino blanco (abierto)",
+    "nl": "Witte wijn (geopend)"
+   },
+   "shelfLifeDays": {
+    "fridge": 7
+   }
+  },
+  {
+   "cloudId": "2e5MTa5nED9a9rQ32etff0",
+   "section": "Beverages & Drinks",
+   "iconName": "zwillingRapier/Wine",
+   "position": 17,
+   "names": {
+    "en": "Red Wine (opened)",
+    "de": "Rotwein (geöffnet)",
+    "fr": "Vin rouge (ouvert)",
+    "it": "Vino rosso (aperto)",
+    "es": "Vino tinto (abierto)",
+    "nl": "Rode wijn (geopend)"
+   },
+   "shelfLifeDays": {
+    "cupboard": 7
+   }
+  }
+ ]
+}

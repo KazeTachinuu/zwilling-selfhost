@@ -1,0 +1,77 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "zwilling-food-organizer",
+  "main": "src/index.ts",
+  "workers_dev": true,
+  // Recent compatibility date. No nodejs_compat: all crypto uses the Web Crypto
+  // global (crypto.subtle), and nothing here imports a Node builtin.
+  "compatibility_date": "2026-08-01",
+  "observability": { "enabled": true },
+
+  // Cron: daily 08:00 UTC FCM expiry-reminder scan (see scheduled() in
+  // src/index.ts -> runDailyReminders). No-op unless FCM_SERVICE_ACCOUNT and
+  // FCM_PROJECT_ID are configured.
+  "triggers": { "crons": ["0 8 * * *"] },
+
+  // Load *.graphql files as text modules, so `import typeDefs from
+  // "../schema.graphql"` yields the SDL string.
+  "rules": [{ "type": "Text", "globs": ["**/*.graphql"], "fallthrough": true }],
+
+  // D1 (SQLite) holds all relational data. `database_id` is left blank; install.sh
+  // (or `wrangler d1 create zwilling`) fills in the real id here.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "zwilling",
+      "database_id": "",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // R2 stores user/entity photos. `bucket_name` is created with
+  // `wrangler r2 bucket create zwilling-photos`.
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "zwilling-photos"
+    }
+  ],
+
+  // Plain vars (secure-by-default; see DEPLOY.md).
+  //
+  //   JWT_SECRET     dev-only placeholder. The Worker REFUSES to serve in
+  //                  production while this is the default: override it with a
+  //                  strong random value via `wrangler secret put JWT_SECRET`.
+  //   JWT_TTL        token lifetime in seconds (90 days). No refresh/revocation,
+  //                  so this is the exposure window for a stolen token; keep it short.
+  //   CORS_ORIGIN    comma-separated browser Origin allow-list. EMPTY = deny all
+  //                  cross-origin (default). The native app sends no Origin and
+  //                  is unaffected. Set to your web origin only if a browser
+  //                  client is used.
+  //   ALLOW_REGISTRATION  "false" (default) = closed registration: unknown
+  //                  usernames are rejected. Provision family accounts with
+  //                  `npm run admin:create-user` (see README). Set "true" only
+  //                  for open self-hosting.
+  //   ALLOW_FIRST_LOGIN_PROVISION  "false" (default). When "false", a login to a
+  //                  pre-provisioned account whose password is still NULL is
+  //                  rejected as invalid credentials and the password is NOT set,
+  //                  closing an account-takeover window (whoever logs in first
+  //                  would otherwise claim the account). Admins set passwords
+  //                  out-of-band via `npm run admin:create-user`. Set "true" only
+  //                  to restore the legacy "first login sets the password" flow.
+  //   DEV            "false" (default). "true" re-enables GraphQL introspection,
+  //                  field suggestions, the GraphiQL IDE, and GET/non-JSON access
+  //                  to /graphql. NEVER set true in production.
+  //   FCM_PROJECT_ID Firebase project id for FCM push (daily expiry reminders).
+  //                  Left blank here; set it alongside the FCM_SERVICE_ACCOUNT
+  //                  secret (`wrangler secret put FCM_SERVICE_ACCOUNT`). Both
+  //                  unset = push disabled (the cron is a no-op).
+  "vars": {
+    "JWT_TTL": "7776000",
+    "CORS_ORIGIN": "",
+    "ALLOW_REGISTRATION": "false",
+    "ALLOW_FIRST_LOGIN_PROVISION": "false",
+    "DEV": "false",
+    "FCM_PROJECT_ID": ""
+  }
+}

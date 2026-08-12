@@ -1,0 +1,2799 @@
+scalar Date
+scalar Unknown
+
+type Query {
+  getListOfAvailbleSocialLoginProviders(siteId: CommerceSiteId!): [String!]
+  refreshToken(additionalFields: CustomerLoginInfoInput, token: String!): ExtendedAuthResponse
+  authQLogin(
+    siteId: CommerceSiteId!
+    username: String!
+    password: String!
+    additionalFields: CustomerLoginInfoInput
+  ): AuthResponse
+  authQRefresh(siteId: CommerceSiteId!): AuthResponse
+  getAppAdvertisements(platform: ApplicationOS, language: String!): [AppAdvertisement]
+  shoppinglists: ShoppingLists
+  shoppinglistContent(cloudId: String!): ShoppingList
+  recipeMarked: RecipeMarked
+  recipesRemoved(day: Int!, month: Int!, year: Int!, branch: String!): RecipeRemoved
+  recipesSearch(
+    parser: RecipesSearchParser
+    facets: [RecipesSearchFacetInput]
+    size: Int
+    cursor: String
+    query: String!
+    locale: String!
+  ): RecipesSearchResults
+  recipesRecommended(
+    seed: Int
+    size: Int
+    cursor: String
+    consider: [RecipesRecommendedOptions!]
+    region: String!
+    locale: String!
+  ): RecipesSearchResults
+  groupJoinHash(mode: GroupJoinHashMode, groupId: String!): GroupJoinHashResponse
+  me: MeResponse
+  settings(siteId: CommerceSiteId, type: SettingType): SettingList
+  notificationsGuestNotificationFreshAndSaveList: NotificationSchedule
+  commerceCatalog: String
+  commerceSiteInfo(
+    preferredLocales: [String!]
+    applicationOS: ApplicationOS
+    siteLocale: String
+    locale: String
+    country: CommerceCountry
+    siteId: CommerceSiteId
+  ): CommerceSiteInfoResponse
+  commerceProductSearch(
+    explicit: Boolean
+    sortId: String
+    facets: [CommerceProductSearchFacetInput!]
+    amount: Int
+    start: Int
+    categoryId: String
+    search: String
+    locale: String
+    siteId: CommerceSiteId!
+  ): CommerceProductSearchResult
+  commerceProductPopularSearchTerms(locale: String!, siteId: CommerceSiteId!): [String!]
+  commerceProductSearchSuggestions(
+    count: Int
+    locale: String
+    siteId: CommerceSiteId!
+    searchPhrase: String!
+  ): [String!]
+  commerceCategory(locale: String, categoryId: String!, siteId: CommerceSiteId!): CommerceCategory
+  commerceProductDetail(
+    locale: String
+    productId: String!
+    siteId: CommerceSiteId!
+  ): CommerceProductBase
+  commerceProductsDetail(
+    locale: String
+    productIds: [String!]!
+    siteId: CommerceSiteId!
+  ): [CommerceProductBase]
+  commerceWishList(locale: String, siteId: CommerceSiteId!): CommerceWishList
+  commerceRecommendationRecommendersList(
+    siteId: CommerceSiteId!
+  ): CommerceRecommendationRecommenders
+  commerceRecommendation(
+    locale: String
+    productIds: [String!]
+    categoryIds: [String!]
+    recommender: CommerceRecommender!
+    siteId: CommerceSiteId!
+  ): CommerceRecommendationResponse
+  getActivePromotions(siteId: CommerceSiteId!): [CustomerPromotion!]
+  commerceCategoryTree(locale: String, siteId: CommerceSiteId!): [CommerceCategoryTreeElement!]
+  devices(language: String!): deviceListResponse
+  devicesSearch(
+    category: deviceCategory
+    page: Int
+    language: String!
+    search: String!
+  ): deviceSearchResponse
+  devicesFind(language: String!, ids: [String!]!): [deviceBase]
+  foodgroupList(locale: String!, bucket: FoodGroupBucket!): [FoodGroup]
+  freshandsaveList(locale: String): FreshAndSaveListing
+  freshandsaveRecents(order: FreshAndSaveSorting, limit: Int, locale: String): FreshAndSaveListing
+  freshandsave(cloudId: ID!): FreshAndSave
+  freshandsaveListStorage(showInactive: Boolean, showActive: Boolean): [FreshAndSaveStorage!]
+  containerGet(containerId: String!): NfcContainer
+  containerList: NfcContainerListResponse
+  hello: String
+  availableLanguages: [LanguageEntry]
+  scheduledNotifications: NotificationSchedule
+  profileAddressList(siteId: CommerceSiteId!): [CustomerAddressFields!]
+  profile(siteId: CommerceSiteId!): CustomerProfile
+  selectedRecipeList(locale: String!): [RecipeDetailed!]
+  recipeList(
+    locale: String!
+    tags: [String!]
+    categories: [String!]
+    allergens: [String!]
+    dietaryPreferences: [String!]
+    mealTypes: [String!]
+    preparationTypes: [String!]
+    query: String
+    limit: Int
+    offset: Int
+  ): RecipeListResponse!
+  recipeListFilters(locale: String!): RecipeFilterResponse!
+  recipeDetailed(id: String!, locale: String!): RecipeDetailed!
+  contentRecipeList(
+    skip: Int
+    limit: Int
+    regions: [String!]
+    recipeIds: [String!]
+    locale: String!
+  ): RecipeListOutput!
+  contentLocaleList(skip: Int, limit: Int, textIds: [String!], locale: String!): [LocaleListEntry!]!
+  contentImageList(skip: Int, limit: Int, locale: String!): ImageListOutput!
+  contentDiscoverList(
+    regions: [String!]
+    contentIds: [String!]
+    productIds: [String!]
+    skip: Int
+    limit: Int
+    locale: String!
+  ): DiscoverListOutput!
+  contentDiscoverDetail(id: String!, locale: String!): DiscoverEntry!
+  contentDiscoverCategoryList(skip: Int, limit: Int, locale: String!): DiscoverCategoryListOutput!
+  contentListAllergenes(skip: Int, limit: Int, locale: String!): DiscoverListAllergenesListOutput!
+  contentListDevices(skip: Int, limit: Int, locale: String!): DiscoverListDevicesListOutput!
+  contentListDietaries(skip: Int, limit: Int, locale: String!): DiscoverListDietariesListOutput!
+  contentListGoals(skip: Int, limit: Int, locale: String!): DiscoverListGoalsListOutput!
+  contentListFoodGroups(skip: Int, limit: Int, locale: String!): DiscoverListFoodGroupsListOutput!
+  contentListMainIngredients(
+    skip: Int
+    limit: Int
+    locale: String!
+  ): DiscoverListMainIngredientsListOutput!
+  contentListMealTypes(skip: Int, limit: Int, locale: String!): DiscoverListMealTypesListOutput!
+  contentAdvertList(skip: Int, limit: Int, locale: String!): AdvertListOutput!
+  commerceBasket(locale: String, siteId: CommerceSiteId!): CommerceBasket
+  commerceContentExperience(
+    locale: String
+    contentId: String!
+    siteId: CommerceSiteId!
+  ): CommerceContentPage!
+  commerceContentBrandCarousel(
+    locale: String
+    siteId: CommerceSiteId!
+  ): ContentBrandCategoryCarousel
+}
+
+type Mutation {
+  getLinkToSocialProvider(
+    provider: String!
+    siteId: CommerceSiteId!
+  ): AuthSocialProviderLinkResponseDTO
+  exchangeCode(exchangeCode: String!, initiationCode: String!): ExtendedAuthResponse
+  authLogin(
+    siteId: CommerceSiteId!
+    username: String!
+    password: String!
+    additionalFields: CustomerLoginInfoInput
+  ): AuthResponse
+  authRefresh(siteId: CommerceSiteId!): AuthResponse
+  authRegister(
+    siteId: CommerceSiteId!
+    firstName: String!
+    lastName: String!
+    username: String!
+    password: String!
+    additionalFields: CustomerProfileInput
+  ): AuthResponse
+  authPasswordReset(
+    siteId: CommerceSiteId!
+    username: String!
+    newPassword: String!
+    resetToken: String!
+  ): AuthPasswordResetResponse
+  readAppAdvertisement(cloudId: String!): Boolean!
+  shoppinglistCreateOrModify(
+    position: Int
+    categories: [ShoppingListCategoryWithEntriesInput!]!
+    name: String!
+    cloudId: String!
+  ): ShoppingList
+  shoppinglistCreate(position: Int, name: String!): ShoppingListIdResponse
+  shoppinglistModify(
+    change: ShoppingListModifyListInput!
+    cloudId: String!
+  ): ShoppingListSuccessResponse
+  shoppinglistRemove(cloudId: String!): ShoppingListSuccessResponse
+  shoppinglistAddCategory(name: String, cloudId: String!): ShoppingListIdResponse
+  shoppinglistModifyCategory(
+    change: ShoppingListCategoryInput!
+    categoryCloudId: String!
+    cloudId: String!
+  ): ShoppingListSuccessResponse
+  shoppinglistRemoveCategory(
+    categoryCloudId: String!
+    cloudId: String!
+  ): ShoppingListSuccessResponse
+  shoppinglistAddEntry(
+    entry: ShoppingListEntryInput!
+    categoryCloudId: String!
+    cloudId: String!
+  ): ShoppingListIdResponse
+  shoppinglistAddEntries(
+    entries: [ShoppingListEntryInput!]!
+    categoryCloudId: String!
+    cloudId: String!
+  ): [ShoppingListEntry]
+  shoppinglistModifyEntry(
+    change: ShoppingListModifyEntryInput!
+    entryCloudId: String!
+    cloudId: String!
+  ): ShoppingListSuccessResponse
+  shoppinglistRemoveEntry(entryCloudId: String!, cloudId: String!): ShoppingListSuccessResponse
+  recipeMark(cloudIds: [String]!): RecipeSuccessResponse
+  recipeUnmark(cloudIds: [String]!): RecipeSuccessResponse
+  groupJoin(hash: String!): GroupJoinResponse
+  groupLeave(groupId: String!): GroupLeaveResponse
+  groupModify(change: GroupModifyInput!, groupId: String!): GroupModifyResponse
+  groupCreate(name: String!): GroupCreateResponse
+  meMarkForDelete: MeMarkForDeleteResponse
+  requestUploadUrl(
+    fileType: UploadUrlFileTypes!
+    usedFor: UploadUrlUsage!
+    cloudId: ID!
+  ): UploadUrlRequestResponse
+  meModify(name: String): MeModifyResponse
+  settingSet(
+    siteId: CommerceSiteId
+    type: SettingType
+    value: String
+    key: String!
+  ): SettingSuccessResponse
+  settingsSet(siteId: CommerceSiteId, settings: [SettingBunchEntry!]!): SettingSuccessResponse
+  settingUnset(siteId: CommerceSiteId, type: SettingType, key: String!): SettingSuccessResponse
+  settingsUnset(siteId: CommerceSiteId, settings: [SettingBunchEntry!]!): SettingSuccessResponse
+  notificationsSettingsSet(
+    fooditemOn: [SettingNotificationFoodItem!]
+    groupOn: [SettingNotificationGroup!]
+    notificationTimes: [Int!]
+  ): NotificationSuccessResponse
+  notificationsAddDevice(token: String!, type: NotificationType!): NotificationSuccessResponse
+  notificationsRemoveDevice(token: String!, type: NotificationType!): NotificationSuccessResponse
+  notificationsSendNotification(
+    data: [NotificationDataInput]
+    options: NotificationOptionsInput
+    notification: NotificationGeneralInput!
+  ): NotificationSuccessResponse
+  requestPasswordReset(locale: String, email: String!, site: CommerceSite!): PasswordResetResponse
+  notificationsGuestNotificationFreshAndSaveAdd(
+    item: NotificationGuestFreshAndSaveItemInput!
+    id: String!
+  ): NotificationSuccessResponse
+  notificationsGuestNotificationFreshAndSaveRemove(id: String!): NotificationSuccessResponse
+  notificationsScheduleMarketing(
+    localTime: TimeInput
+    users: [String!]!
+    date: DateYMDInput!
+    contentId: String!
+  ): notificationsScheduleMarketingResponse
+  removeCustomerAccount: GeneralBooleanSuccessResponse
+  sendCustomNotificationToCustomers(
+    customersIds: [String!]
+    customersNos: [String!]
+    notificationScheduleOptions: NotificationScheduleOptions
+    notification: NotificationGeneralInput!
+    password: String!
+    siteId: CommerceSiteId!
+  ): notificationsScheduleMarketingResponse
+  commerceProductToWishList(
+    locale: String
+    amountDifference: Int!
+    productId: String!
+    siteId: CommerceSiteId!
+  ): CommerceWishList
+  commerceTrackProductView(productId: String!, siteId: CommerceSiteId!): CommerceTrackResponse
+  commerceTrackRecommendationsView(
+    recommender: CommerceRecommender!
+    recommendedId: String!
+    productIds: [String!]!
+    siteId: CommerceSiteId!
+  ): CommerceTrackResponse
+  commerceTrackRecommendationClick(
+    recommender: CommerceRecommender!
+    recommendedId: String!
+    productId: String!
+    siteId: CommerceSiteId!
+  ): CommerceTrackResponse
+  commerceTrackAddToCart(
+    products: [CommerceTrackCheckoutProduct!]!
+    siteId: CommerceSiteId!
+  ): CommerceTrackResponse
+  commerceGenerateCookie(siteId: CommerceSiteId!): CommerceCookieResponse
+  readPromotion(promotions: [CustomerPromotionReadStatus!]!): [CustomerPromotion!]
+  commerceCustomerContext(
+    shopperData: [CommerceCustomerContextFieldInput!]
+    siteId: CommerceSiteId!
+  ): CommerceCustomerContextResponse
+  deviceAdd(language: String!, articleNumberGlobal: String!): deviceAddResponse
+  deviceRemove(cloudId: String!): DeviceRemoveSuccessResponse
+  deviceRegister(
+    userData: deviceRegisterUserInput!
+    purchaseDate: String!
+    cloudId: String!
+  ): deviceRegisterResponse
+  foodgroupCreate(
+    storable: [FoodGroupCreateStorable]
+    position: Int
+    iconName: String
+    section: String
+    name: String!
+  ): FoodGroupCreateResponse
+  freshandsaveCreate(
+    type: StorageType
+    fillLevel: FreshAndSaveStorageFillLevel
+    storageCloudId: ID
+    sealed: Boolean
+    foodgroupId: String
+    storageplace: Storage
+    containerId: String
+    container: ContainerInput
+    description: String
+    expire: String!
+    name: String!
+  ): FreshAndSaveCreateResponse
+  freshandsaveModify(change: FreshAndSaveModifyInput!, cloudId: ID!): FreshAndSaveModifyResponse
+  freshandsaveDuplicate(cloudId: ID!): FreshAndSaveDuplicateResponse
+  freshandsaveAddStorage(name: String!): FreshAndSaveStorage
+  freshandsaveModifyStorage(
+    state: FreshAndSaveStorageState
+    name: String!
+    cloudId: ID!
+  ): FreshAndSaveStorage
+  freshandsaveRemoveStorage(cloudId: ID!): FreshAndSaveRemoveStorageResponse
+  containerSave(
+    info: NfcContainerSaveAdditionalInfo
+    storageType: StorageType!
+    size: String!
+    containerType: String!
+    containerId: String!
+  ): NfcContainerSaveResponse
+  containerRemove(containerId: String!): NfcContainerRemoveResponse
+  containerUpdate(
+    info: NfcContainerSaveAdditionalInfo
+    storageType: StorageType
+    size: String
+    containerType: String
+    containerId: String!
+  ): NfcContainerSaveResponse
+  analyzeFoodItemFromImage(locale: String!, image: String!): AIResponse
+  devFlush: Boolean
+  devTestDatalake(year: Int!, month: Int!, day: Int!): Boolean
+  profileAddressCreate(
+    name: String
+    address: CustomerAddressFieldsInput!
+    siteId: CommerceSiteId!
+  ): CustomerAddressFields
+  profileAddressModify(
+    address: CustomerAddressFieldsInput!
+    name: String!
+    siteId: CommerceSiteId!
+  ): CustomerAddressFields
+  profileAddressVerify(
+    address: CustomerAddressFieldsInput!
+    name: String!
+    siteId: CommerceSiteId!
+  ): Boolean
+  profileAddressRemove(name: String!, siteId: CommerceSiteId!): Boolean
+  profileModify(fields: CustomerProfileInput!, siteId: CommerceSiteId!): CustomerProfile
+  commerceAlterBasket(
+    locale: String
+    basket: CommerceBasketInput
+    siteId: CommerceSiteId!
+  ): CommerceBasket
+  commerceProductToBasket(
+    bonuseLineItemId: String
+    locale: String
+    amountDifference: Int!
+    productId: String!
+    siteId: CommerceSiteId!
+  ): CommerceBasket
+}
+
+enum AIFillLevel {
+  EMPTY
+  QUARTER
+  HALF
+  THREE_QUARTERS
+  FULL
+}
+
+union AIResponse = ValidResponse
+type AdvertListEntry {
+  identifier: String!
+  name: String!
+  detailImage: ContentAsset
+  position: Int!
+  weblink: String!
+}
+
+type AdvertListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [AdvertListEntry!]!
+}
+
+type Allergen {
+  identifier: String!
+  name: String!
+  icon: String
+  iconPreview: String
+}
+
+type AppAdvertisement {
+  applicationVersion: String
+  cloudId: String!
+  createdAt: String!
+  deeplink: String
+  description: String!
+  image: String
+  status: AppAdvertisementStatus!
+  title: String!
+}
+
+enum AppAdvertisementStatus {
+  NEW
+  SEEN
+}
+
+enum ApplicationOS {
+  ANDROID
+  IOS
+}
+
+type ApplicationVersion {
+  version: String!
+  forceUpdate: Boolean!
+}
+
+type AuthPasswordResetResponse {
+  result: AuthPasswordResetResult!
+}
+
+enum AuthPasswordResetResult {
+  INVALID_LOGIN
+  INVALID_PASSWORD
+  INVALID_TOKEN
+  SUCCESS
+  UNKNOWN_ERROR
+}
+
+type AuthResponse {
+  token: String!
+}
+
+type AuthSocialProviderLinkResponseDTO {
+  link: String!
+  provider: String!
+  code: String!
+}
+
+type Color {
+  red: Int!
+  green: Int!
+  blue: Int!
+  alpha: Float
+}
+
+type CommerceAsset {
+  link(
+    scale: CommerceAssetScaleOptions
+    pngCompression: CommerceAssetPngCompression
+    jpgQuality: CommerceAssetJpgQuality
+    format: CommerceAssetFormat
+  ): String
+  title: String
+  alt: String
+  contentType: String
+}
+
+enum CommerceAssetFormat {
+  GIF
+  JP2
+  JPG
+  JPEG
+  JXR
+  PNG
+}
+
+enum CommerceAssetJpgQuality {
+  DEFAULT
+  Q100
+  Q90
+  Q80
+  Q70
+  Q60
+  Q50
+  Q40
+  Q30
+  Q20
+  Q10
+}
+
+enum CommerceAssetPngCompression {
+  DEFAULT
+  C9
+  C8
+  C7
+  C6
+  C5
+  C4
+  C3
+  C2
+  C1
+}
+
+input CommerceAssetScaleOptions {
+  width: Int!
+  height: Int!
+  mode: CommerceAssetScaleOptionsMode!
+}
+
+enum CommerceAssetScaleOptionsMode {
+  CUT
+  FIT
+}
+
+type CommerceBasket {
+  order: CommerceBasketOrder
+}
+
+type CommerceBasketBonusLineItem {
+  bonusId: String
+  linkedProductId: String
+  isUsed: Boolean
+  maxQuantity: Int
+  products: [CommerceProductBase!]
+  promotionMessage: String
+}
+
+input CommerceBasketInput {
+  billingAddress: String
+  coupon: String
+  items: [CommerceBasketInputItemOption!]
+  clearBasket: Boolean
+}
+
+input CommerceBasketInputItemOption {
+  id: String!
+  amount: Int!
+  bonuseLineItemId: String
+}
+
+type CommerceBasketOrder {
+  subtotal: Float
+  tax: Float
+  total: Float
+  totalSavings: Float
+  shippingtotal: Float
+  shippingtax: Float
+  currency: String
+  currencySymbol: String
+  items: [CommerceBasketOrderItem!]
+  bonusLineItems: [CommerceBasketBonusLineItem!]
+}
+
+type CommerceBasketOrderItem {
+  id: String
+  stockLevel: Int
+  brand: String
+  ean: String
+  price: Float
+  priceStriked: Float
+  quantityMinOrder: Int
+  quantityStep: Int
+  quantity: Int
+  name: String
+  bonus: Boolean
+  bonusText: String
+  tax: Float
+  taxRate: Float
+  categoryName: String
+  image: CommerceAsset
+  discountDescription: String
+  bonuseLineItemId: String
+  detail: CommerceProductBase
+}
+
+type CommerceCategory {
+  id: String!
+  name: String
+  parentCategory: String
+  thumbnail: CommerceAsset
+  description: String
+  bannerImage: String
+  bannerHtml: String
+}
+
+union CommerceCategoryTreeElement =
+  | CommerceCategoryTreeElementSale
+  | CommerceCategoryTreeElementCategory
+  | CommerceCategoryTreeElementProduct
+  | CommerceCategoryTreeElementBrand
+type CommerceCategoryTreeElementBrand {
+  id: String!
+  name: String!
+  position: Int!
+  level: Int!
+  thumbnail: String!
+  image: String!
+  parent: String!
+  path: String!
+  hasChildren: Boolean!
+  color: String
+  type: String!
+  shortDescription: String
+  brandImageWithBackground: String
+}
+
+type CommerceCategoryTreeElementCategory {
+  id: String!
+  name: String!
+  position: Int!
+  level: Int!
+  thumbnail: String!
+  image: String!
+  parent: String!
+  path: String!
+  hasChildren: Boolean!
+  color: String
+  type: String!
+}
+
+type CommerceCategoryTreeElementProduct {
+  id: String!
+  name: String!
+  position: Int!
+  level: Int!
+  thumbnail: String!
+  image: String!
+  parent: String!
+  path: String!
+  hasChildren: Boolean!
+  color: String
+  type: String!
+  productId: String!
+}
+
+type CommerceCategoryTreeElementSale {
+  id: String!
+  name: String!
+  position: Int!
+  level: Int!
+  thumbnail: String!
+  image: String!
+  parent: String!
+  path: String!
+  hasChildren: Boolean!
+  color: String
+  type: String!
+  isSale: String
+}
+
+type CommerceContentAssetCategoryTile {
+  id: String!
+  custom: CommerceContentAssetCategoryTileCustom
+  data: CommerceContentAssetCategoryTileData!
+}
+
+type CommerceContentAssetCategoryTileCustom {
+  online: Boolean!
+  onlineFrom: String
+  onlineTo: String
+  url: String
+}
+
+type CommerceContentAssetCategoryTileData {
+  disableLazyLoad: Boolean!
+  catName: String!
+  category: String!
+  catImage: CommerceContentAssetCategoryTileImage
+}
+
+type CommerceContentAssetCategoryTileImage {
+  focalPoint: CommerceContentAssetCategoryTileImageFocalPoint!
+  metaData: CommerceContentAssetCategoryTileImageMetaData!
+  url: String!
+}
+
+type CommerceContentAssetCategoryTileImageFocalPoint {
+  x: Float!
+  y: Float!
+}
+
+type CommerceContentAssetCategoryTileImageMetaData {
+  height: Int!
+  width: Int!
+}
+
+type CommerceContentAssetProductTile {
+  id: String!
+  data: CommerceContentAssetProductTileData!
+}
+
+type CommerceContentAssetProductTileData {
+  disableLazyLoad: Boolean!
+  product: String!
+  tileStyle: String!
+}
+
+union CommerceContentComponent =
+  | CommerceContentComponentImage
+  | CommerceContentComponentEditorial
+  | CommerceContentComponentMediaAndText
+type CommerceContentComponentEditorial {
+  id: String!
+  data: CommerceContentComponentEditorialData!
+}
+
+type CommerceContentComponentEditorialData {
+  editorialContentPosition: String!
+  editorialContent: String!
+  editorialHeadingPosition: String!
+  editorialCTAPosition: String!
+  editorialHeading: String!
+  editorialHeadingPadding: Int!
+  paddingTopBottom: String!
+  paddingLeftRight: String!
+  showHeading: Boolean!
+  showContent: Boolean!
+  showCTA: Boolean!
+  ctaTarget: String!
+}
+
+type CommerceContentComponentEditorialRichText {
+  id: String!
+  data: CommerceContentComponentEditorialRichTextData!
+}
+
+type CommerceContentComponentEditorialRichTextData {
+  richText: String!
+}
+
+type CommerceContentComponentEinsteinCarouselCategory {
+  id: String!
+  data: CommerceContentComponentEinsteinCarouselCategoryData
+}
+
+type CommerceContentComponentEinsteinCarouselCategoryData {
+  title: String
+  description: String
+  titleStyle: String!
+  descriptionStyle: String!
+  category: String!
+  count: String!
+  mdCarouselSlidesToDisplay: Int!
+  mdCarouselOptions: Boolean!
+  smCarouselSlidesToDisplay: Int!
+  smCarouselOptions: Boolean!
+  xsCarouselSlidesToDisplay: Int!
+  xsCarouselOptions: Boolean!
+  spaceBelow: String!
+  spaceAbove: String!
+  maximumWidth: String!
+  disabledOverlapping: Boolean!
+  ctaText: String!
+  ctaLink: String!
+  ctaTarget: String!
+  ctaStyle: String!
+  ctaColour: String!
+  recommender: CommerceContentComponentEinsteinCarouselCategoryDataRecommender
+}
+
+type CommerceContentComponentEinsteinCarouselCategoryDataRecommender {
+  value: String!
+}
+
+type CommerceContentComponentImage {
+  focalPoint: CommerceContentComponentImageFocalPoint!
+  metaData: CommerceContentComponentImageMetaData!
+  url: String!
+}
+
+type CommerceContentComponentImageFocalPoint {
+  x: Float!
+  y: Float!
+}
+
+type CommerceContentComponentImageMetaData {
+  height: Int!
+  width: Int!
+}
+
+type CommerceContentComponentMediaAndText {
+  id: String!
+  data: CommerceContentComponentMediaAndTextData!
+}
+
+type CommerceContentComponentMediaAndTextData {
+  title: String!
+  titleStyle: String!
+  descriptionStyle: String!
+  textAlignment: String!
+  textPosition: String!
+  textColor: String!
+  image: CommerceContentComponentImage
+  imageWidth: String!
+  imageSize: String!
+  imageAlignment: String!
+  backgroundColor: String!
+  youtubePlayerMode: String!
+  youtubeContentLink: String
+  disableLazyLoad: Boolean!
+  paddingTopBottom: String!
+  paddingLeftRight: String!
+  ctaText: String!
+  ctaLink: String!
+  ctaColour: String!
+  ctaTarget: String!
+  ctaStyle: String!
+  description: String!
+}
+
+type CommerceContentComponentMobileGridOneRowOneColumnLayout {
+  id: String!
+  data: CommerceContentComponentMobileGridOneRowOneColumnLayoutData
+  regions: [CommerceContentRegion]
+}
+
+type CommerceContentComponentMobileGridOneRowOneColumnLayoutData {
+  spaceAbove: String!
+  spaceBelow: String!
+  isFullWidth: Boolean!
+  maximumWidth: String!
+}
+
+type CommerceContentComponentMobileGridOneRowThreeColumnsLayout {
+  id: String!
+  data: CommerceContentComponentMobileGridOneRowThreeColumnsLayoutData
+  regions: [CommerceContentRegion]
+}
+
+type CommerceContentComponentMobileGridOneRowThreeColumnsLayoutData {
+  spaceAbove: String!
+  spaceBelow: String!
+  isFullWidth: Boolean!
+  maximumWidth: String!
+  turnRowsIntoCols: Boolean!
+}
+
+type CommerceContentComponentMobileGridOneRowTwoColumnsLayout {
+  id: String!
+  data: CommerceContentComponentMobileGridOneRowTwoColumnsLayoutData
+  regions: [CommerceContentRegion]
+}
+
+type CommerceContentComponentMobileGridOneRowTwoColumnsLayoutData {
+  spaceAbove: String!
+  spaceBelow: String!
+  isFullWidth: Boolean!
+  maximumWidth: String!
+  turnRowsIntoCols: Boolean!
+}
+
+type CommerceContentPage {
+  id: String!
+  title: String
+  description: String
+  name: String
+  regions: [CommerceContentRegion]
+  data: Float
+}
+
+type CommerceContentRegion {
+  id: String!
+  components: [CommerceContentComponent]
+}
+
+type CommerceCookieResponse {
+  contents: [String!]
+}
+
+enum CommerceCountry {
+  BELGIUM
+  NETHERLANDS
+  LUXEMBURG
+  UNITED_KINGDOM
+  GERMANY
+  AUSTRIA
+  FRANCE
+  ITALY
+  NORWAY
+  SWEDEN
+  DENMARK
+  TURKEY
+  SPAIN
+  PORTUGAL
+  SWITZERLAND
+  POLAND
+  ROMANIA
+  SLOVAKIA
+  LITHUANIA
+  HUNGARY
+  BULGARIA
+  SLOVENIA
+  CZECH_REPUBLIC
+  ESTONIA
+  FINLAND
+  LATVIA
+  MALTA
+  MOLDOVA
+  UKRAINE
+  CANADA
+  UNITED_STATES_OF_AMERICA
+  BRAZIL
+  GUATEMALA
+  MEXICO
+  URUGUAY
+  CHILE
+  PARAGUAY
+  JAPAN
+  KOREA
+  TAIWAN
+  UNITED_ARAB_EMIRATES
+  SOUTH_AFRICA
+  GLOBAL
+}
+
+input CommerceCustomerContextFieldInput {
+  os: ApplicationOS
+}
+
+type CommerceCustomerContextResponse {
+  success: Boolean!
+}
+
+type CommerceLayoutComponentCarousel {
+  id: String!
+  data: CommerceLayoutComponentCarouselData!
+  regions: [SliderSlideComponent]
+}
+
+type CommerceLayoutComponentCarouselData {
+  mdCarouselOptions: Boolean!
+  ctaColour: String!
+  descriptionStyle: String!
+  description: String!
+  smCarouselOptions: Boolean!
+  autoPlaySpeed: Float!
+  xsCarouselSlidesToDisplay: Float!
+  disabledOverlapping: Boolean!
+  smCarouselSlidesToDisplay: Float!
+  heroSlider: Boolean!
+  infiniteLoop: Boolean!
+  spaceAbove: String!
+  ctaStyle: String!
+  stackOnMobile: Boolean!
+  cssClass: String!
+  maximumWidth: String!
+  centerItems: Boolean!
+  customClass: String!
+  titleStyle: String!
+  title: String!
+  mdCarouselSlidesToDisplay: Float!
+  xsCarouselOptions: Boolean!
+  ctaTarget: String!
+  spaceBelow: String!
+}
+
+type CommerceProduct implements CommerceProductBase {
+  id: String
+  ratingAverage: Float
+  ratingCount: Int
+  price: Float
+  priceStriked: Float
+  isExclusive: Boolean
+  isNew: Boolean
+  isSale: Boolean
+  isPurchasable: Boolean
+  orderable: Boolean
+  preorderable: Boolean
+  backorderable: Boolean
+  stockLevel: Int
+  brand: String
+  brandLogo: String
+  series: String
+  ean: String
+  currency: String
+  currencySymbol: String
+  categoryPrimary: String
+  quantityMinOrder: Int
+  quantityStep: Int
+  labels: [CommerceProductLabels]
+  labelsLocalized: [CommerceProductLabelsLocalized]
+  activePromotionId: String
+  preorder: CommerceProductPreorder
+  pdfPackagingSecurity: [String!]
+  pdfPackagingUseAndCare: [String!]
+  categoryPrimaryName: String
+  descriptionShort: String
+  descriptionLong: String
+}
+
+interface CommerceProductBase {
+  id: String
+  ratingAverage: Float
+  ratingCount: Int
+  price: Float
+  priceStriked: Float
+  isExclusive: Boolean
+  isNew: Boolean
+  isSale: Boolean
+  isPurchasable: Boolean
+  orderable: Boolean
+  preorderable: Boolean
+  backorderable: Boolean
+  stockLevel: Int
+  brand: String
+  brandLogo: String
+  series: String
+  ean: String
+  currency: String
+  currencySymbol: String
+  categoryPrimary: String
+  quantityMinOrder: Int
+  quantityStep: Int
+  labels: [CommerceProductLabels]
+  labelsLocalized: [CommerceProductLabelsLocalized]
+  activePromotionId: String
+  preorder: CommerceProductPreorder
+  pdfPackagingSecurity: [String!]
+  pdfPackagingUseAndCare: [String!]
+}
+
+type CommerceProductDetail implements CommerceProductBase {
+  id: String
+  ratingAverage: Float
+  ratingCount: Int
+  price: Float
+  priceStriked: Float
+  isExclusive: Boolean
+  isNew: Boolean
+  isSale: Boolean
+  isPurchasable: Boolean
+  orderable: Boolean
+  preorderable: Boolean
+  backorderable: Boolean
+  stockLevel: Int
+  brand: String
+  brandLogo: String
+  series: String
+  ean: String
+  currency: String
+  currencySymbol: String
+  categoryPrimary: String
+  quantityMinOrder: Int
+  quantityStep: Int
+  labels: [CommerceProductLabels]
+  labelsLocalized: [CommerceProductLabelsLocalized]
+  activePromotionId: String
+  preorder: CommerceProductPreorder
+  pdfPackagingSecurity: [String!]
+  pdfPackagingUseAndCare: [String!]
+  categoryPrimaryName: String
+  name: String
+  description: CommerceProductDetailDescription
+  variants: [CommerceProductDetailVariant!]
+  currentVariation: [CommerceProductDetailVariantValues!]
+  variations: [CommerceProductDetailVariantAttribute!]
+  specs: [CommerceProductDetailSpec!]
+  teaser: CommerceProductDetailTeaser
+  featureImage: CommerceAsset
+  classification: CommerceProductDetailClassification
+  content: CommerceProductDetailContent
+  images: [CommerceAsset!]
+}
+
+type CommerceProductDetailClassification {
+  group: String
+  segment: String
+  type: String
+  series: String
+}
+
+type CommerceProductDetailContent {
+  articles: [CommerceProductDetailContentArticle!]
+}
+
+type CommerceProductDetailContentArticle {
+  id: String!
+  title: String
+  description: String
+  heroImage: CommerceAsset
+  categories: [CommerceProductDetailContentArticleCategory!]
+  relatedArticles: [CommerceProductDetailContentRelatedArticle!]
+  sections: [CommerceProductDetailContentArticleSection!]
+  tags: [String!]
+}
+
+type CommerceProductDetailContentArticleCategory {
+  id: String!
+  title: String!
+  position: Int
+  image: CommerceAsset
+}
+
+type CommerceProductDetailContentArticleSection {
+  title: String
+  description: String
+  assets: [CommerceAsset!]
+}
+
+type CommerceProductDetailContentRelatedArticle {
+  id: String!
+  title: String
+  hero: CommerceAsset
+}
+
+type CommerceProductDetailDescription {
+  text: String
+  details: [String!]
+}
+
+union CommerceProductDetailSpec =
+  | CommerceProductDetailSpecString
+  | CommerceProductDetailSpecFloat
+  | CommerceProductDetailSpecBoolean
+type CommerceProductDetailSpecBoolean {
+  key: String!
+  booleanValue: Boolean!
+  unit: String
+}
+
+type CommerceProductDetailSpecFloat {
+  key: String!
+  floatValue: Float!
+  unit: String
+}
+
+type CommerceProductDetailSpecString {
+  key: String!
+  stringValue: String!
+  unit: String
+}
+
+type CommerceProductDetailTeaser {
+  headline: String
+  bulletpoints: [String!]
+}
+
+type CommerceProductDetailVariant {
+  id: String
+  orderable: Boolean
+  price: Float
+  values: [CommerceProductDetailVariantValues!]
+}
+
+type CommerceProductDetailVariantAttribute {
+  id: String!
+  name: String!
+  values: [CommerceProductDetailVariantAttributeValue!]
+}
+
+type CommerceProductDetailVariantAttributeValue {
+  name: String!
+  orderable: Boolean!
+  value: String!
+  image: CommerceAsset
+}
+
+type CommerceProductDetailVariantValues {
+  id: String!
+  value: String!
+}
+
+enum CommerceProductLabels {
+  BLACK_FRIDAY
+  BONUS
+  BUY_ONE_GET_ONE
+  CAMPAIGN
+  CLEARANCE
+  COMING_SOON
+  DEAL_OF_THE_WEEK
+  DISCONTINUED
+  DOOR_CRASHER
+  ENGRAVING
+  EXCLUSIVE
+  FORGED_SET
+  FREE_ENGRAVING
+  GAS_ONLY
+  HOT_DEAL
+  INDUCTION_SAFE
+  LIMITED_STOCK
+  NEW
+  NONE
+  ONLINE_EXCLUSIVE
+  OPEN_BOX
+  PFAS_FREE
+  REFURBISHED
+  SPECIAL_PRICE
+  SPECIAL_PRICE_1
+  SPECIAL_PRICE_2
+  STAFF_PICK
+  STAFF_PICK_ALT
+  STARTER_SET
+  TOP_DEAL
+  TOP_GIFT
+  TOP_SELLER
+  PERCENT_DISCOUNT
+  CYBER_MONDAY
+  EOY
+  EXTRA25
+  OUTLET
+  PRE_ORDER
+  SINGLES_DAY
+}
+
+type CommerceProductLabelsLocalized {
+  value: String!
+  id: CommerceProductLabels!
+}
+
+type CommerceProductPreorder {
+  available: Boolean
+  date: Date
+}
+
+input CommerceProductSearchFacetInput {
+  facetId: String!
+  valueId: String!
+}
+
+type CommerceProductSearchResult {
+  amount: Int!
+  start: Int!
+  total: Int!
+  hits: [CommerceProductSearchResultHit!]!
+  facets: [CommerceProductSearchResultFacet!]!
+  sorts: [CommerceProductSearchResultSort!]!
+}
+
+type CommerceProductSearchResultFacet {
+  id: String!
+  name: String!
+  entries: [CommerceProductSearchResultFacetValue!]!
+}
+
+type CommerceProductSearchResultFacetValue {
+  id: String!
+  name: String!
+  amount: Int!
+  display: [CommerceProductSearchResultFacetValueDisplayLayer!]
+  presentationType: String
+  presentationContent: String
+}
+
+union CommerceProductSearchResultFacetValueDisplayLayer =
+  | CommerceProductSearchResultFacetValueDisplayLayerBaseColor
+  | CommerceProductSearchResultFacetValueDisplayLayerCategoryInformation
+  | CommerceProductSearchResultFacetValueDisplayLayerGradient
+type CommerceProductSearchResultFacetValueDisplayLayerBaseColor {
+  color: Color
+}
+
+type CommerceProductSearchResultFacetValueDisplayLayerCategoryInformation {
+  subcategory: Boolean!
+}
+
+type CommerceProductSearchResultFacetValueDisplayLayerGradient {
+  direction: Int!
+  colors: [CommerceProductSearchResultFacetValueDisplayLayerGradientColor!]
+}
+
+type CommerceProductSearchResultFacetValueDisplayLayerGradientColor {
+  location: Float!
+  color: Color
+}
+
+type CommerceProductSearchResultHit {
+  product: CommerceProductSearchResultHitProduct!
+  currency: String
+  currencySymbol: String
+  image: CommerceAsset
+  orderable: Boolean
+  price: Float
+  pricePerUnit: Float
+  variations: [CommerceProductSearchResultHitVariation!]!
+  details: CommerceProductBase
+}
+
+type CommerceProductSearchResultHitProduct {
+  id: String!
+  name: String!
+  option: Boolean
+  variant: Boolean
+}
+
+type CommerceProductSearchResultHitVariation {
+  id: String!
+  name: String!
+  entries: [CommerceProductSearchResultHitVariationEntry!]!
+}
+
+type CommerceProductSearchResultHitVariationEntry {
+  id: String!
+  name: String!
+}
+
+type CommerceProductSearchResultSort {
+  id: String!
+  name: String!
+}
+
+type CommerceRecommendationRecommender {
+  name: String!
+  description: String!
+  type: String!
+}
+
+type CommerceRecommendationRecommenders {
+  recommenders: [CommerceRecommendationRecommender!]
+}
+
+type CommerceRecommendationResponse {
+  recommendedId: String!
+  products: [CommerceProductBase!]!
+}
+
+enum CommerceRecommender {
+  PDP
+  OTHERS_ALSO_VIEWED
+  ALTERNATIVE_PRODUCTS
+  CART
+  FOR_CATEGORY
+  PRODUCT_IN_CATEGORY
+  ERROR
+  TOP_SELLERS
+  TOP_SELLERS_NEW
+  RECENTLY_VIEWED
+}
+
+enum CommerceSite {
+  ZWILLING_GLOBAL
+  ZWILLING_BE
+  ZWILLING_CA
+  ZWILLING_DE
+  ZWILLING_DK
+  ZWILLING_ES
+  ZWILLING_FR
+  ZWILLING_IT
+  ZWILLING_JP
+  ZWILLING_TR
+  ZWILLING_UK
+  ZWILLING_US
+}
+
+enum CommerceSiteId {
+  BE
+  CA
+  DE
+  DK
+  ES
+  FR
+  GLOBAL
+  IT
+  JP
+  TR
+  UK
+  US
+}
+
+type CommerceSiteInfoResponse {
+  rootCategory: String!
+  checkoutUrl: String!
+  checkoutUrlState: String!
+  domain: String!
+  siteId: String!
+  siteLocale: String!
+  contentfulEnvironment: String!
+  rootExperiencePage: String
+  promoBanners: [PromoBanner]
+  versions: [ApplicationVersion]!
+}
+
+input CommerceTrackCheckoutProduct {
+  id: String!
+  ean: String!
+  price: Float!
+  quantity: Int!
+}
+
+type CommerceTrackResponse {
+  id: String
+}
+
+type CommerceWishList {
+  items: [CommerceWishListItem!]!
+}
+
+type CommerceWishListItem {
+  id: String
+  brand: String
+  ean: String
+  price: Float
+  priceStriked: Float
+  quantity: Int
+  stockLevel: Int
+  name: String
+  categoryName: String
+  image: CommerceAsset
+  detail: CommerceProductBase
+}
+
+type Container {
+  type: String
+  size: String
+  variant: String
+  code: String
+  year: String
+}
+
+input ContainerInput {
+  type: String!
+  size: String!
+  variant: String!
+  code: String!
+  year: String!
+}
+
+input ContainerModifyInput {
+  type: String
+  size: String
+  variant: String
+  code: String
+  year: String
+}
+
+type ContentAsset {
+  id: ID!
+  publishedAt: String!
+  version: Int!
+  url: String!
+  smallUrl: String!
+  mediumUrl: String!
+  largeUrl: String!
+  mimeType: String!
+}
+
+type ContentBrandCategoryCarousel {
+  title: String
+  items: [ContentBrandCategoryCarouselItem!]
+}
+
+type ContentBrandCategoryCarouselItem {
+  title: String
+  description: String
+  bannerImage: String
+  link: String
+}
+
+type CustomerAddressFields {
+  id: String!
+  address1: String
+  address2: String
+  birthday: DateYMD
+  complement: String
+  district: String
+  firstNameOther: String
+  houseNumber: String
+  lastNameOther: String
+  phoneCode: String
+  streetName: String
+  taxId: String
+  taxOffice: String
+  taxNumber: String
+  city: String
+  companyName: String
+  countryCode: String
+  firstName: String
+  secondName: String
+  lastName: String
+  fullName: String
+  jobTitle: String
+  phone: String
+  postBox: String
+  postalCode: String
+  preferred: Boolean
+  salutation: String
+  stateCode: String
+  suffix: String
+  suite: String
+  title: String
+}
+
+input CustomerAddressFieldsInput {
+  address1: String
+  address2: String
+  birthday: DateYMDInput
+  complement: String
+  district: String
+  firstNameOther: String
+  houseNumber: String
+  lastNameOther: String
+  phoneCode: String
+  streetName: String
+  taxId: String
+  taxOffice: String
+  taxNumber: String
+  city: String
+  companyName: String
+  countryCode: String
+  firstName: String
+  secondName: String
+  lastName: String
+  fullName: String
+  jobTitle: String
+  phone: String
+  postBox: String
+  postalCode: String
+  preferred: Boolean
+  salutation: String
+  stateCode: String
+  suffix: String
+  suite: String
+  title: String
+}
+
+input CustomerLoginInfoInput {
+  osName: String
+  osVersion: String
+  phoneModel: String
+  appVersion: String
+  language: String
+  region: String
+}
+
+type CustomerProfile {
+  customerId: String!
+  customerNumber: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  birthday: DateYMD
+  gender: Int
+  secondName: String
+  jobTitle: String
+  phoneHome: String
+  phoneBusiness: String
+  phoneMobile: String
+  preferredLocale: String
+  salutation: String
+  title: String
+  visitId: String
+  countryCode: String
+  sfccContactId: String
+  houseHoldPeople: Int
+  marketingPushNotificationConsent: Boolean
+  marketingPushNotificationConsentDate: Date
+  inventoryPushNotificationConsent: Boolean
+  inventoryPushNotificationConsentDate: Date
+  addresses: [CustomerAddressFields!]
+  subscribedNewsletter: Boolean
+  name: String
+  freshandsaveHash: String
+  foodgroupHash: String
+  shoppinglistHash: String
+  groups: [ProfileGroup]
+  photo: [ProfilePhoto]
+}
+
+input CustomerProfileInput {
+  birthday: DateYMDInput
+  gender: Int
+  firstName: String
+  secondName: String
+  lastName: String
+  jobTitle: String
+  phoneHome: String
+  phoneBusiness: String
+  phoneMobile: String
+  preferredLocale: String
+  salutation: String
+  title: String
+  countryCode: String
+  subscribedNewsletter: Boolean
+  houseHoldPeople: Int
+  marketingPushNotificationConsent: Boolean
+  inventoryPushNotificationConsent: Boolean
+}
+
+type CustomerPromotion {
+  id: String!
+  title: String
+  description: String
+  image: String
+  buttonTitle: String
+  isRead: Boolean
+  deepLink: String
+  promoCode: String
+  deepLinkArray: [String!]
+}
+
+input CustomerPromotionReadStatus {
+  id: String!
+  isRead: Boolean
+}
+
+type DateYMD {
+  year: Int!
+  month: Int!
+  day: Int!
+}
+
+input DateYMDInput {
+  year: Int!
+  month: Int!
+  day: Int!
+}
+
+type DeviceRemoveSuccessResponse {
+  success: Boolean!
+}
+
+type DietaryPreference {
+  identifier: String!
+  name: String!
+}
+
+type DiscoverCategoryEntry {
+  id: ID!
+  title: String!
+  position: Int!
+}
+
+type DiscoverCategoryListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverCategoryEntry!]!
+}
+
+type DiscoverContentEntry {
+  id: ID!
+  title: String!
+  asset: ContentAsset
+  description: String!
+}
+
+type DiscoverEntry {
+  id: ID!
+  title: String!
+  hero: ContentAsset
+  description: String!
+  order: Int!
+  categories: [DiscoverCategoryEntry!]
+  relatedArticles: [DiscoverRelatedArticleEntry!]
+  contents: [DiscoverContentEntry!]
+  tags: [String!]!
+}
+
+type DiscoverListAllergeneEntry {
+  id: String!
+  name: String!
+  image: ContentAsset
+}
+
+type DiscoverListAllergenesListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverListAllergeneEntry!]!
+}
+
+type DiscoverListDeviceEntry {
+  id: String!
+  name: String!
+  type: String!
+  materialNumber: String!
+  position: Int!
+  image: ContentAsset
+}
+
+type DiscoverListDevicesListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverListDeviceEntry!]!
+}
+
+type DiscoverListDietariesListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverListDietaryEntry!]!
+}
+
+type DiscoverListDietaryEntry {
+  id: String!
+  name: String!
+}
+
+type DiscoverListFoodGroupEntry {
+  id: String!
+  name: String!
+  icon: String!
+  daysGoodInCupboard: Int!
+  daysGoodInFreezer: Int!
+  daysGoodInFridge: Int!
+  position: Int!
+}
+
+type DiscoverListFoodGroupsListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverListFoodGroupEntry!]!
+}
+
+type DiscoverListGoalsEntry {
+  id: String!
+  title: String!
+  subtitle: String!
+  image: ContentAsset
+  detailTitle: String!
+  detailSubtitle: String!
+  detailImage: ContentAsset
+}
+
+type DiscoverListGoalsListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverListGoalsEntry!]!
+}
+
+type DiscoverListMainIngredientEntry {
+  id: String!
+  name: String!
+  icon: ContentAsset
+}
+
+type DiscoverListMainIngredientsListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverListMainIngredientEntry!]!
+}
+
+type DiscoverListMealTypeEntry {
+  id: String!
+  name: String!
+  icon: ContentAsset
+}
+
+type DiscoverListMealTypesListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverListMealTypeEntry!]!
+}
+
+type DiscoverListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  items: [DiscoverEntry!]!
+}
+
+type DiscoverRelatedArticleEntry {
+  id: ID!
+  title: String!
+  hero: ContentAsset
+  description: String!
+  categories: [DiscoverCategoryEntry!]!
+}
+
+type ErrorResponse {
+  error: String!
+}
+
+type ExpireData {
+  id: Storage!
+  expireTime: Float!
+  isBestChoice: Boolean!
+}
+
+type ExtendedAuthResponse {
+  token: String!
+  refreshToken: String!
+}
+
+type FoodGroup {
+  cloudId: String!
+  state: String!
+  owner: ID!
+  bucket: FoodGroupBucket!
+  hash: String!
+  name: String
+  section: String
+  iconName: String
+  icon: String
+  iconActive: String
+  iconAnimated: String
+  iconPreview: String
+  position: Int
+  storable: [FoodGroupStorable]
+}
+
+enum FoodGroupBucket {
+  ZWILLING
+  CUSTOM
+}
+
+type FoodGroupCreateResponse {
+  cloudId: ID!
+}
+
+input FoodGroupCreateStorable {
+  location: String!
+  icon: String
+  days: Int!
+}
+
+type FoodGroupStorable {
+  location: String
+  icon: String
+  days: Int
+}
+
+type FreshAndSave {
+  cloudId: ID!
+  name: String!
+  description: String
+  created: Date!
+  expire: Date
+  modified: Date
+  photo: [FreshAndSavePhoto]
+  storageplace: Storage
+  container: Container
+  vessel: FreshAndSaveVessel
+  sealed: Boolean
+  owner: ID!
+  hash: String!
+  state: String!
+  type: StorageType
+  storageCloudId: ID
+  storageName: String
+  fillLevel: FreshAndSaveStorageFillLevel
+  foodgroup(locale: String): FoodGroup
+}
+
+type FreshAndSaveCreateResponse {
+  cloudId: ID!
+}
+
+type FreshAndSaveDuplicateResponse {
+  cloudId: ID!
+}
+
+type FreshAndSaveListing {
+  hash: String!
+  items: [FreshAndSave]
+}
+
+input FreshAndSaveModifyInput {
+  name: String
+  description: String
+  storageplace: Storage
+  removeStorageplace: Boolean
+  expire: Date
+  container: ContainerModifyInput
+  containerId: String
+  removeContainer: Boolean
+  state: FreshAndSaveState
+  foodgroupId: String
+  sealed: Boolean
+  clearPhoto: Boolean
+  storageCloudId: ID
+  fillLevel: FreshAndSaveStorageFillLevel
+  type: StorageType
+}
+
+type FreshAndSaveModifyResponse {
+  success: Boolean!
+}
+
+type FreshAndSavePhoto {
+  type: String!
+  url: Url!
+}
+
+type FreshAndSaveRemoveStorageResponse {
+  success: Boolean!
+}
+
+enum FreshAndSaveSorting {
+  CREATION_ASC
+  CREATION_DESC
+  NAME_ASC
+  NAME_DESC
+  FREQUENCY_ASC
+  FREQUENCY_DESC
+}
+
+enum FreshAndSaveState {
+  OK
+  ARCHIVED
+  REMOVED
+}
+
+type FreshAndSaveStorage {
+  id: ID!
+  name: String!
+  type: FreshAndSaveStorageType!
+  owner: String!
+}
+
+enum FreshAndSaveStorageFillLevel {
+  EMPTY
+  LOW
+  MEDIUM
+  FULL
+}
+
+enum FreshAndSaveStorageState {
+  ACTIVE
+  INACTIVE
+}
+
+enum FreshAndSaveStorageType {
+  CUSTOM
+  PRESET
+}
+
+union FreshAndSaveVessel = Container | NfcContainer
+type GeneralBooleanSuccessResponse {
+  success: Boolean!
+}
+
+type GroupCreateResponse {
+  success: Boolean!
+  groupId: ID!
+}
+
+enum GroupJoinHashMode {
+  PERMANENT
+  TEMPORARY
+}
+
+type GroupJoinHashResponse {
+  hash: String!
+  groupId: ID!
+}
+
+type GroupJoinResponse {
+  success: Boolean!
+}
+
+type GroupLeaveResponse {
+  success: Boolean!
+}
+
+input GroupModifyInput {
+  name: String
+}
+
+type GroupModifyResponse {
+  success: Boolean!
+}
+
+type ImageEntry {
+  id: ID!
+  publishedAt: String!
+  asset: ContentAsset
+  path: String!
+}
+
+type ImageListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  images: [ImageEntry!]!
+}
+
+type Ingredient {
+  ingredientId: String!
+  amountImperial: String
+  ingredientName: String!
+  amountMetric: String
+  unitImperial: String
+  unitMetric: String
+}
+
+type IngredientSection {
+  section: String
+  ingredients: [Ingredient!]!
+}
+
+type InstructionBody {
+  text: String!
+  products: [String!]
+  media: [Media!]!
+}
+
+type InstructionSection {
+  instructionSection: String
+  instructionBody: [InstructionBody!]!
+}
+
+type LanguageEntry {
+  name: String
+  code: String
+  fallback: String
+  default: Boolean
+}
+
+type LocaleListEntry {
+  identifier: String!
+  content: String!
+}
+
+type MeGroup {
+  groupId: ID!
+  name: String
+  joinHash: String
+  members: [MeMember]
+}
+
+type MeMarkForDeleteResponse {
+  success: Boolean!
+}
+
+type MeMember {
+  userId: ID!
+  owner: Boolean
+  name: String
+  photo: [MePhoto]
+}
+
+type MeModifyResponse {
+  success: Boolean!
+}
+
+type MePhoto {
+  type: String!
+  url: Url!
+}
+
+type MeResponse {
+  customerId: ID!
+  name: String
+  freshandsaveHash: String
+  foodgroupHash: String
+  shoppinglistHash: String
+  groups: [MeGroup]
+  photo: [MePhoto]
+}
+
+type MealType {
+  identifier: String!
+  name: String!
+}
+
+type Media {
+  url: String!
+  altText: String
+}
+
+type NfcContainer {
+  containerId: String!
+  type: String!
+  size: String!
+  storageType: StorageType!
+  amountOfGrams: Int
+  variant: String
+  year: String
+  code: String
+}
+
+type NfcContainerListResponse {
+  containers: [NfcContainer!]
+  options: [NfcContainerOption!]
+}
+
+type NfcContainerOption {
+  type: String!
+  sizes: [String!]!
+}
+
+type NfcContainerRemoveResponse {
+  success: Boolean!
+}
+
+input NfcContainerSaveAdditionalInfo {
+  amountOfGrams: Int
+  variant: String
+  year: String
+  code: String
+}
+
+type NfcContainerSaveResponse {
+  success: Boolean!
+}
+
+input NotificationDataInput {
+  key: String!
+  value: String!
+}
+
+input NotificationGeneralInput {
+  title: String!
+  body: String!
+}
+
+input NotificationGuestFreshAndSaveItemInput {
+  name: String!
+  expire: String!
+  description: String
+  container: ContainerInput
+  storageplace: Storage
+  foodgroupId: String
+  sealed: Boolean
+  storageCloudId: ID
+  fillLevel: FreshAndSaveStorageFillLevel
+  type: StorageType
+}
+
+type NotificationInformation {
+  cloudid: String!
+  linked: String!
+  ymd: String!
+  time: String
+  content: [NotificationInformationContent!]!
+}
+
+type NotificationInformationContent {
+  key: String!
+  value: String!
+}
+
+input NotificationOptionsAndroidInput {
+  collapsekey: String
+  priority: String
+  badge: String
+}
+
+input NotificationOptionsInput {
+  android: NotificationOptionsAndroidInput
+  ios: NotificationOptionsIosInput
+}
+
+input NotificationOptionsIosInput {
+  threadid: String
+  badge: Int
+}
+
+type NotificationSchedule {
+  servertime: String!
+  usertime: String!
+  usertimezone: String!
+  notifications: [NotificationInformation!]!
+}
+
+input NotificationScheduleOptions {
+  date: DateYMDInput!
+  localeTime: TimeInput!
+}
+
+type NotificationSuccessResponse {
+  success: Boolean!
+}
+
+enum NotificationType {
+  ANDROID_FIREBASE
+  APPLE_APNS
+}
+
+type PasswordResetResponse {
+  success: Boolean!
+}
+
+type PreparationType {
+  identifier: String!
+  name: String!
+}
+
+type ProfileGroup {
+  groupId: ID!
+  name: String
+  joinHash: String
+  members: [ProfileMember]
+}
+
+type ProfileMember {
+  userId: ID!
+  owner: Boolean
+  name: String
+  photo: [ProfilePhoto]
+}
+
+type ProfilePhoto {
+  type: String!
+  url: Url!
+}
+
+type PromoBanner {
+  type: PromoBannerType!
+  text: String!
+  link: String
+}
+
+enum PromoBannerType {
+  GLOBAL
+  HEADER
+  HOME
+}
+
+type Recipe {
+  identifier: String!
+  title: String!
+  hero: String!
+  tags: [String!]!
+  categories: [String!]!
+  dietaryPreferences: [String!]!
+  mealTypes: [String!]!
+  preparationTypes: [String!]!
+  approvedLocales: [String!]!
+  details: RecipeDetailed
+}
+
+type RecipeAllergen {
+  identifier: String!
+  name: String!
+  image: ContentAsset
+}
+
+type RecipeCategory {
+  id: ID!
+  name: String!
+  position: Int!
+  symbol: String!
+}
+
+type RecipeCategory2 {
+  identifier: String!
+  name: String!
+  icon: String
+  iconPreview: String
+}
+
+type RecipeDetailed {
+  identifier: String!
+  title: String!
+  hero: String!
+  categories: [RecipeCategory2!]!
+  description: String
+  portions: Int!
+  preparationTime: TimeUnit
+  cookingTime: TimeUnit
+  restingTime: TimeUnit
+  ingredients: [IngredientSection!]!
+  instructions: [InstructionSection!]!
+  tip: String
+  info: String
+  allergens: [Allergen!]!
+  dietaryPreferences: [DietaryPreference!]!
+  mealTypes: [MealType!]!
+  preparationTypes: [PreparationType!]!
+  tags: [String!]!
+  featuredRecipes: [String!]!
+}
+
+type RecipeDevice {
+  id: ID!
+  name: String!
+  type: String!
+  materialNumber: String!
+  position: Int!
+  image: ContentAsset
+}
+
+type RecipeDietary {
+  identifier: String!
+  name: String!
+}
+
+type RecipeEntry {
+  id: ID!
+  title: String!
+  description: String!
+  persons: Int!
+  cookingTime: Int!
+  restingTime: Int!
+  tip: String!
+  products: [String!]!
+  tags: [String!]!
+  mealTypes: [RecipeMealType!]!
+  mainIngredients: [RecipeMainIngredient!]!
+  hero: ContentAsset
+  categories: [RecipeCategory!]!
+  ingredients: [RecipeIngredientUnion!]!
+  instructions: [RecipeInstruction!]!
+  gallery: [RecipeGallery!]!
+  devices: [RecipeDevice!]!
+  dietaries: [RecipeDietary!]!
+  allergens: [RecipeAllergen!]!
+}
+
+type RecipeFilterResponse {
+  allergens: [Allergen!]!
+  dietaryPreferences: [DietaryPreference!]!
+  mealTypes: [MealType!]!
+  preparationTypes: [PreparationType!]!
+  recipeCategories: [RecipeCategory2!]!
+}
+
+type RecipeGallery {
+  id: String!
+}
+
+type RecipeIngredient {
+  id: ID!
+  version: Int!
+  publishedAt: String!
+  internalName: String!
+  customMeasurement: String!
+  measurement: String!
+  measurementImperial: String!
+  quantity: Float!
+  quantityImperial: Float!
+  ingredient: RecipeIngredientIngredient!
+}
+
+type RecipeIngredientIngredient {
+  id: ID!
+  version: Int!
+  publishedAt: String!
+  name: String!
+  category: RecipeIngredientIngredientCategory
+  allergens: [RecipeIngredientIngredientAllergen!]!
+}
+
+type RecipeIngredientIngredientAllergen {
+  identifier: String!
+}
+
+type RecipeIngredientIngredientCategory {
+  id: ID!
+  version: Int!
+  publishedAt: String!
+  name: String!
+}
+
+type RecipeIngredientSubtitle {
+  id: ID!
+  version: Int!
+  publishedAt: String!
+  title: String!
+}
+
+union RecipeIngredientUnion = RecipeIngredient | RecipeIngredientSubtitle
+type RecipeInstruction {
+  description: String!
+}
+
+type RecipeListOutput {
+  total: Int!
+  skip: Int!
+  limit: Int!
+  recipes: [RecipeEntry!]!
+}
+
+type RecipeListResponse {
+  locale: String!
+  offset: Int!
+  limit: Int!
+  numberOfRecipesReturned: Int!
+  total: Int!
+  data: [Recipe!]!
+}
+
+type RecipeMainIngredient {
+  id: ID!
+  name: String!
+}
+
+type RecipeMarked {
+  favorites: [String]!
+}
+
+type RecipeMealType {
+  id: ID!
+  name: String!
+}
+
+type RecipeRemoved {
+  removed: [String]!
+}
+
+type RecipeSuccessResponse {
+  success: Boolean!
+}
+
+enum RecipesRecommendedOptions {
+  DEVICES
+  ALLERGENES
+  DIATERY_PREFERENCES
+}
+
+input RecipesSearchFacetInput {
+  name: String!
+  facet: [Unknown!]!
+}
+
+enum RecipesSearchParser {
+  SIMPLE
+  STRUCTURED
+}
+
+type RecipesSearchResults {
+  found: Int!
+  start: Int!
+  cursor: String!
+  hits: [RecipesSearchResultsHit!]!
+  facets: [RecipesSearchResultsFacet!]!
+  isRandom: Boolean
+}
+
+type RecipesSearchResultsFacet {
+  name: String!
+  entries: [RecipesSearchResultsFacetEntry!]!
+}
+
+type RecipesSearchResultsFacetEntry {
+  name: String!
+  amount: Int!
+}
+
+type RecipesSearchResultsHit {
+  id: String!
+  language: String!
+  categories: [String!]!
+  title: String!
+  description: String!
+  regions: [String!]!
+  preparationTime: Int!
+  cookingTime: Int!
+  restingTime: Int!
+  overallTime: Int!
+  servings: Int!
+  ingredients: [String!]!
+  devices: [String!]!
+  tags: [String!]!
+  devicesMaterialNumber: [String!]!
+  devicesTypesIds: [String!]!
+  ingredientsIds: [String!]!
+  mainIngredientsIds: [String!]!
+  mealTypeIds: [String!]!
+  preparationTypeIds: [String!]!
+  score: Float!
+}
+
+input SettingBunchEntry {
+  type: SettingType!
+  key: String!
+  value: String!
+}
+
+type SettingEntry {
+  key: String!
+  value: String!
+}
+
+type SettingList {
+  settings: [SettingEntry]!
+}
+
+enum SettingNotificationFoodItem {
+  EXPIRED
+  EXPIRES_SOON
+}
+
+enum SettingNotificationGroup {
+  GROUP
+  DEVICES
+  FOODITEMS
+}
+
+type SettingSuccessResponse {
+  success: Boolean!
+}
+
+enum SettingType {
+  GENERAL
+  GOALS
+  DIATERY
+  ALLERGIES
+}
+
+type ShoppingList {
+  cloudId: ID!
+  hash: String!
+  position: Int!
+  name: String!
+  state: ShoppingListState!
+  owner: String!
+  categories: [ShoppingListCategory]!
+}
+
+type ShoppingListCategory {
+  cloudId: ID!
+  position: Int!
+  name: String
+  entries: [ShoppingListEntry]!
+}
+
+input ShoppingListCategoryInput {
+  name: String
+  position: Int
+}
+
+input ShoppingListCategoryWithEntriesInput {
+  name: String
+  position: Int
+  entries: [ShoppingListEntryInput]!
+}
+
+type ShoppingListEntry {
+  cloudId: ID!
+  position: Int!
+  name: String!
+  value: String!
+  unit: String!
+  state: ShoppingListEntryState!
+}
+
+input ShoppingListEntryInput {
+  name: String!
+  value: String!
+  unit: String!
+  position: Int
+  state: ShoppingListEntryState
+}
+
+enum ShoppingListEntryState {
+  OK
+  CHECKED
+}
+
+type ShoppingListIdResponse {
+  cloudId: String!
+}
+
+input ShoppingListModifyEntryInput {
+  name: String
+  value: String
+  unit: String
+  position: Int
+  state: ShoppingListEntryState
+}
+
+input ShoppingListModifyListInput {
+  name: String
+  position: Int
+}
+
+enum ShoppingListState {
+  OK
+  ARCHIVED
+  REMOVED
+}
+
+type ShoppingListSuccessResponse {
+  success: Boolean!
+}
+
+type ShoppingLists {
+  entries: [ShoppingList]!
+}
+
+type SliderSlideComponentPlaceholder {
+  id: String
+}
+
+union SliderSlideComponent = SliderSlideComponentPlaceholder
+enum Storage {
+  CUPBOARD
+  FREEZER
+  FRESHZONE
+  FRIDGE
+  SHELF
+  ZERODEGREEZONE
+}
+
+enum StorageType {
+  UNKNOWN
+  FRESHANDSAVE
+  DRYSTORAGE
+}
+
+input TimeInput {
+  hour: Int!
+  minute: Int!
+}
+
+type TimeUnit {
+  unit: String!
+  value: Int!
+}
+
+enum UploadUrlFileTypes {
+  JPEG
+  PNG
+  WEBP
+}
+
+type UploadUrlRequestResponse {
+  url: Url
+  headers: [UploadUrlRequestResponseHeaders]
+}
+
+type UploadUrlRequestResponseHeaders {
+  name: String
+  value: String
+}
+
+enum UploadUrlUsage {
+  DEVICERECEIPT
+  FRESHANDSAVE
+  PROFILE
+  AI_FRESHANDSAVE
+}
+
+scalar Url
+
+type ValidResponse {
+  name: String!
+  expireData: [ExpireData!]!
+  foodGroup: [String]
+  allergens: [String]
+  fillLevel: AIFillLevel
+}
+
+type deviceAccessories {
+  name: String!
+  articleNumberGlobal: String!
+}
+
+type deviceAddResponse {
+  cloudId: String!
+}
+
+type deviceAdvertisment {
+  name: String!
+  link: Url!
+  image: Url
+  articleNumberGlobal: String
+  position: Int
+}
+
+type deviceBase {
+  articleNumberLocal: String!
+  articleNumberGlobal: String!
+  iotNumber: String
+  iotType: deviceType
+  iotProtocolVersion: deviceProtocol
+  ean: String!
+  upc: String!
+  brand: String!
+  name: String!
+  color: String!
+  size: String!
+  series: String!
+  image: Url!
+  category: [deviceCategory]
+}
+
+enum deviceCategory {
+  FRESH_AND_SAVE
+  ELECTRICS
+  WARRANTY
+  STANDARD
+  GIFT_WITH_PURCHASE
+}
+
+type deviceExtension {
+  name: String!
+  typeNumber: String!
+  typeName: String!
+  typeList: [deviceType!]!
+  articleNumberGlobal: String!
+  firmwareVersion: String!
+  manual: String!
+  faq: String!
+  image: Url!
+  accessories: [deviceAccessories!]
+  productInfo: [deviceProductInfo!]
+}
+
+type deviceInformation {
+  cloudId: String!
+  owner: String!
+  name: String!
+  serialNumber: String
+  buyDate: String
+  registerDate: String
+  registrationForwarded: Boolean
+  manufacturingDate: String
+  firmwareVersion: String
+  hasReceipt: Boolean!
+  device: deviceBase!
+  extension: deviceExtension
+}
+
+type deviceListResponse {
+  devices: [deviceInformation!]!
+  advertisments: [deviceAdvertisment!]!
+}
+
+type deviceProductInfo {
+  contentId: String!
+}
+
+enum deviceProtocol {
+  SV001
+}
+
+type deviceRegisterResponse {
+  success: Boolean!
+}
+
+input deviceRegisterUserInput {
+  title: String!
+  firstname: String!
+  lastname: String!
+  email: String!
+  address1: String!
+  address2: String!
+  streetNo: String!
+  city: String!
+  phonenumber: String!
+  state: String!
+  zip: String!
+  country: String!
+  brand: String!
+  locale: String!
+}
+
+type deviceSearchResponse {
+  total: Int!
+  entries: [deviceBase!]!
+}
+
+enum deviceType {
+  BLENDER
+  SOUSVIDE
+  SOUSVIDESTICK
+  TOASTER
+  KETTLE
+  SCALE
+  FRESHANDSAVE
+  COFFEEWORLD
+  BBQ
+  THERMOMETER
+  COOKING
+  GRILL
+  SMART
+}
+
+type notificationsScheduleMarketingResponse {
+  success: Boolean!
+  details: [notificationsScheduleMarketingResponseUser]!
+}
+
+type notificationsScheduleMarketingResponseUser {
+  customerId: String!
+  success: Boolean!
+  reason: String
+}

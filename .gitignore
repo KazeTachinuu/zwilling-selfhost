@@ -1,0 +1,35 @@
+# deps / build
+**/node_modules/
+**/.wrangler/
+**/dist/
+
+# local data (D1 sqlite, R2 blobs)
+cloudflare/data/*.db
+cloudflare/data/*.db-*
+
+# logs / scratch
+*.log
+.playwright-mcp/
+
+# python (if any tooling venvs appear)
+**/__pycache__/
+**/.venv/
+
+# local export credentials/sessions (never commit)
+**/zwilling-export/
+**/creds.json
+
+# secrets — never commit Firebase service-account keys or google-services
+**/*firebase-adminsdk*.json
+**/service-account*.json
+google-services.json
+
+# decompiled proprietary app (regenerable via jadx; large) + binaries
+jadx-src/
+decompiled_src/
+**/*.apk
+**/*.apks
+**/*.xapk
+**/*.aar
+**/*.dex
+**/*.keystore

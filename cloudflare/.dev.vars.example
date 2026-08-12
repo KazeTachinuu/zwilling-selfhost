@@ -1,0 +1,13 @@
+# Local development overrides for `wrangler dev`. Copy to `.dev.vars` (gitignored)
+# and edit. These override the vars in wrangler.jsonc for local runs ONLY; they
+# are never deployed.
+#
+#   cp .dev.vars.example .dev.vars
+#
+# Why this file exists: wrangler.jsonc is secure-by-default (DEV=false and the
+# dev-default JWT_SECRET), so the Worker REFUSES to serve unless you either set a
+# real secret or opt into DEV. For local dev, opt into DEV here.
+
+DEV = "true"
+ALLOW_REGISTRATION = "true"
+JWT_SECRET = "local-dev-only-secret-change-me"

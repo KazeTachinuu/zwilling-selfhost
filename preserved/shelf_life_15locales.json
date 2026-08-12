@@ -1,0 +1,599 @@
+{
+ "source": "foodgroupList(bucket:ZWILLING) live archive",
+ "locales": [
+  "cs",
+  "de",
+  "en",
+  "es",
+  "fr",
+  "hu",
+  "it",
+  "ja",
+  "ko",
+  "nl",
+  "pl",
+  "pt",
+  "sk",
+  "tr",
+  "zh"
+ ],
+ "count": 21,
+ "groups": [
+  {
+   "cloudId": "4HD7ErEPKa5DJPlpjwEcIM",
+   "section": "Meat",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Beef (fresh)",
+    "de": "Rindfleisch (frisch)",
+    "en": "Beef (fresh)",
+    "es": "Vacuno (fresco)",
+    "fr": "Bœuf (frais)",
+    "hu": "Beef (fresh)",
+    "it": "Manzo (fresco)",
+    "ja": "牛肉（生）",
+    "ko": "Beef (fresh)",
+    "nl": "Rundsvlees (vers)",
+    "pl": "Beef (fresh)",
+    "pt": "Carne de vaca (fresca)",
+    "sk": "Beef (fresh)",
+    "tr": "Biftek (taze)",
+    "zh": "Beef (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 8,
+    "zerodegreezone": 9
+   }
+  },
+  {
+   "cloudId": "5951bLLppivKv13CLtc5Xf",
+   "section": "Vegetables & Fruits",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Vegetables (fresh)",
+    "de": "Gemüse (frisch)",
+    "en": "Vegetables (fresh)",
+    "es": "Verduras (frescas)",
+    "fr": "Légumes (frais)",
+    "hu": "Vegetables (fresh)",
+    "it": "Verdure (fresche)",
+    "ja": "野菜（生）",
+    "ko": "Vegetables (fresh)",
+    "nl": "Groenten (vers)",
+    "pl": "Vegetables (fresh)",
+    "pt": "Vegetais (frescos)",
+    "sk": "Vegetables (fresh)",
+    "tr": "Sebzeler (taze)",
+    "zh": "Vegetables (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 20,
+    "zerodegreezone": 22
+   }
+  },
+  {
+   "cloudId": "NCQizVdUaju362p0mci7j",
+   "section": "Vegetables & Fruits",
+   "iconName": "zwillingRapier/Herbs",
+   "position": 0,
+   "names": {
+    "cs": "Herbs (fresh)",
+    "de": "Kräuter (frisch)",
+    "en": "Herbs (fresh)",
+    "es": "Hierbas (frescas)",
+    "fr": "Herbes (fraîches)",
+    "hu": "Herbs (fresh)",
+    "it": "Erbe aromatiche (fresche)",
+    "ja": "ハーブ（生）",
+    "ko": "Herbs (fresh)",
+    "nl": "Kruiden (vers)",
+    "pl": "Herbs (fresh)",
+    "pt": "Ervas (frescas)",
+    "sk": "Herbs (fresh)",
+    "tr": "Otlar (taze)",
+    "zh": "Herbs (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 10,
+    "zerodegreezone": 11
+   }
+  },
+  {
+   "cloudId": "4VwL0PH4obFLRUSV9RDHVT",
+   "section": "Fish & Seafood",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Seafood (fresh)",
+    "de": "Meeresfrüchte (frisch)",
+    "en": "Seafood (fresh)",
+    "es": "Marisco (fresco)",
+    "fr": "Fruits de mer (frais)",
+    "hu": "Seafood (fresh)",
+    "it": "Meeresfrüchte (frisch)",
+    "ja": "シーフード（生）",
+    "ko": "Seafood (fresh)",
+    "nl": "Fisk og skaldyr (friske)",
+    "pl": "Seafood (fresh)",
+    "pt": "Marisco (fresco)",
+    "sk": "Seafood (fresh)",
+    "tr": "Deniz Ürünleri (taze)",
+    "zh": "Seafood (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 40,
+    "fridge": 3,
+    "zerodegreezone": 4
+   }
+  },
+  {
+   "cloudId": "5BBd8tF63OavTkUvKWZbW5",
+   "section": "Vegetables & Fruits",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Lettuce (fresh)",
+    "de": "Blattsalate (frisch)",
+    "en": "Lettuce (fresh)",
+    "es": "Lechuga (fresca)",
+    "fr": "Laitue (fraîche)",
+    "hu": "Lettuce (fresh)",
+    "it": "Lattuga (fresca)",
+    "ja": "レタス（生）",
+    "ko": "Lettuce (fresh)",
+    "nl": "Sla (vers)",
+    "pl": "Lettuce (fresh)",
+    "pt": "Alface (fresca)",
+    "sk": "Lettuce (fresh)",
+    "tr": "Marul (taze)",
+    "zh": "Lettuce (fresh)"
+   },
+   "shelfLifeDays": {
+    "fridge": 10,
+    "zerodegreezone": 12
+   }
+  },
+  {
+   "cloudId": "5otQ4qBgtoSZg03mYgD6Pg",
+   "section": "Cereals",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Pasta",
+    "de": "Nudeln",
+    "en": "Pasta",
+    "es": "Pasta",
+    "fr": "Pâtes",
+    "hu": "Pasta",
+    "it": "Pasta",
+    "ja": "パスタ",
+    "ko": "Pasta",
+    "nl": "Pasta",
+    "pl": "Pasta",
+    "pt": "Massa",
+    "sk": "Pasta",
+    "tr": "Makarna",
+    "zh": "Pasta"
+   },
+   "shelfLifeDays": {
+    "cupboard": 365
+   }
+  },
+  {
+   "cloudId": "6YnLfZJikxpQfMEb8oe3vd",
+   "section": "Cooked",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Cooked pasta and rice",
+    "de": "Gekochte Pasta und Reis",
+    "en": "Cooked pasta and rice",
+    "es": "Pasta y arroz cocidos",
+    "fr": "Pâtes et riz cuites",
+    "hu": "Cooked pasta and rice",
+    "it": "Pasta e riso cotti",
+    "ja": "ご飯、茹でた麺",
+    "ko": "Cooked pasta and rice",
+    "nl": "Gekookte pasta en rijst",
+    "pl": "Cooked pasta and rice",
+    "pt": "Massa cozida e arroz",
+    "sk": "Cooked pasta and rice",
+    "tr": "Pişmiş makarna ve pirinç",
+    "zh": "Cooked pasta and rice"
+   },
+   "shelfLifeDays": {
+    "freezer": 30,
+    "fridge": 7,
+    "zerodegreezone": 9
+   }
+  },
+  {
+   "cloudId": "7CncwIRfz1c7dognT2dq5B",
+   "section": "Meat",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Pork (fresh)",
+    "de": "Schweinefleisch (frisch)",
+    "en": "Pork (fresh)",
+    "es": "Cerdo (fresco)",
+    "fr": "Porc (frais)",
+    "hu": "Pork (fresh)",
+    "it": "Maiale (fresco)",
+    "ja": "豚肉（生）",
+    "ko": "Pork (fresh)",
+    "nl": "Varkensvlees (vers)",
+    "pl": "Pork (fresh)",
+    "pt": "Carne de porco (fresca)",
+    "sk": "Pork (fresh)",
+    "tr": "Domuz Eti (taze)",
+    "zh": "Pork (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 6,
+    "zerodegreezone": 7
+   }
+  },
+  {
+   "cloudId": "1K54WGNoqmr4w4inGjprAd",
+   "section": "Meat",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Poultry (fresh)",
+    "de": "Geflügel (frisch)",
+    "en": "Poultry (fresh)",
+    "es": "Aves (fresco)",
+    "fr": "Volaille (fraîche)",
+    "hu": "Poultry (fresh)",
+    "it": "Pollame (fresco)",
+    "ja": "鶏肉（生）",
+    "ko": "Poultry (fresh)",
+    "nl": "Gevogelte (vers)",
+    "pl": "Poultry (fresh)",
+    "pt": "Aves de capoeira (frescas)",
+    "sk": "Poultry (fresh)",
+    "tr": "Kümes Hayvanları (taze)",
+    "zh": "Poultry (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 6,
+    "zerodegreezone": 7
+   }
+  },
+  {
+   "cloudId": "6JgXf1Yywjj5iFAugd9yOm",
+   "section": "Cereals",
+   "iconName": "",
+   "position": 0,
+   "names": {
+    "cs": "Rice",
+    "de": "Reis",
+    "en": "Rice",
+    "es": "Arroz",
+    "fr": "Riz",
+    "hu": "Rice",
+    "it": "Riso",
+    "ja": "米",
+    "ko": "Rice",
+    "nl": "Rijst",
+    "pl": "Rice",
+    "pt": "Arroz",
+    "sk": "Rice",
+    "tr": "Pirinç",
+    "zh": "Rice"
+   },
+   "shelfLifeDays": {
+    "cupboard": 365
+   }
+  },
+  {
+   "cloudId": "LKNSgQRfbQACF4huBHG0b",
+   "section": "Cooked",
+   "iconName": "",
+   "position": 1,
+   "names": {
+    "cs": "Cooked Dishes",
+    "de": "Gekochte Gerichte",
+    "en": "Cooked Dishes",
+    "es": "Platos preparados",
+    "fr": "Plats cuits",
+    "hu": "Cooked Dishes",
+    "it": "Piatti cotti",
+    "ja": "加熱した料理",
+    "ko": "Cooked Dishes",
+    "nl": "Gekookte Gerechten",
+    "pl": "Cooked Dishes",
+    "pt": "Pratos cozinhados",
+    "sk": "Cooked Dishes",
+    "tr": "Pişmiş Yemekler",
+    "zh": "Cooked Dishes"
+   },
+   "shelfLifeDays": {
+    "freezer": 35,
+    "fridge": 7,
+    "zerodegreezone": 9
+   }
+  },
+  {
+   "cloudId": "7Ff9vmtaqsceHrXwfXsIo0",
+   "section": "Vegetables & Fruits",
+   "iconName": "",
+   "position": 5,
+   "names": {
+    "cs": "Fruits (fresh)",
+    "de": "Früchte (frisch)",
+    "en": "Fruits (fresh)",
+    "es": "Fruta (fresca)",
+    "fr": "Fruits (frais)",
+    "hu": "Fruits (fresh)",
+    "it": "Frutta (fresca)",
+    "ja": "果物（生）",
+    "ko": "Fruits (fresh)",
+    "nl": "Fruit (vers)",
+    "pl": "Fruits (fresh)",
+    "pt": "Frutas (frescas)",
+    "sk": "Fruits (fresh)",
+    "tr": "Meyve (taze)",
+    "zh": "Fruits (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 10,
+    "zerodegreezone": 12
+   }
+  },
+  {
+   "cloudId": "3FVUQxrT8qD1zgw1qlOrld",
+   "section": "Fish & Seafood",
+   "iconName": "zwillingRapier/Fish",
+   "position": 6,
+   "names": {
+    "cs": "Fish (fresh)",
+    "de": "Fisch (frisch)",
+    "en": "Fish (fresh)",
+    "es": "Pescado (fresco)",
+    "fr": "Poisson (frais)",
+    "hu": "Fish (fresh)",
+    "it": "Pesce (fresco)",
+    "ja": "魚（生）",
+    "ko": "Fish (fresh)",
+    "nl": "Vis (vers)",
+    "pl": "Fish (fresh)",
+    "pt": "Peixe (fresco)",
+    "sk": "Fish (fresh)",
+    "tr": "Balık (taze)",
+    "zh": "Fish (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 40,
+    "fridge": 6,
+    "zerodegreezone": 7
+   }
+  },
+  {
+   "cloudId": "2NbvCmBeJouO4hGYVhWqYN",
+   "section": "Meat",
+   "iconName": "",
+   "position": 10,
+   "names": {
+    "cs": "Sausage (fresh)",
+    "de": "Wurst (frisch)",
+    "en": "Sausage (fresh)",
+    "es": "Salchichas (fresco)",
+    "fr": "Saucisse (fraîche)",
+    "hu": "Sausage (fresh)",
+    "it": "Salsiccia (fresca)",
+    "ja": "ソーセージ（生）",
+    "ko": "Sausage (fresh)",
+    "nl": "Worst (vers)",
+    "pl": "Sausage (fresh)",
+    "pt": "Salsicha (fresca)",
+    "sk": "Sausage (fresh)",
+    "tr": "Sosis (taze)",
+    "zh": "Sausage (fresh)"
+   },
+   "shelfLifeDays": {
+    "freezer": 50,
+    "fridge": 10,
+    "zerodegreezone": 11
+   }
+  },
+  {
+   "cloudId": "15gpHmQlIdWfDqMcLD5wGv",
+   "section": "Cheese",
+   "iconName": "zwillingRapier/HardCheese",
+   "position": 11,
+   "names": {
+    "cs": "Hard cheese",
+    "de": "Hartkäse",
+    "en": "Hard cheese",
+    "es": "Queso curado",
+    "fr": "Fromage à pâte dure",
+    "hu": "Hard cheese",
+    "it": "Formaggio stagionato",
+    "ja": "ハードチーズ",
+    "ko": "Hard cheese",
+    "nl": "Harde kaas",
+    "pl": "Hard cheese",
+    "pt": "Queijo duro",
+    "sk": "Hard cheese",
+    "tr": "Sert peynir",
+    "zh": "Hard cheese"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 39,
+    "zerodegreezone": 41
+   }
+  },
+  {
+   "cloudId": "2cJg4UEsxXHJXu8ZEQLtBA",
+   "section": "Cheese",
+   "iconName": "",
+   "position": 12,
+   "names": {
+    "cs": "Soft cheese",
+    "de": "Weichkäse",
+    "en": "Soft cheese",
+    "es": "Queso tierno",
+    "fr": "Fromage à pâte molle",
+    "hu": "Soft cheese",
+    "it": "Formaggio fresco",
+    "ja": "ソフトチーズ",
+    "ko": "Soft cheese",
+    "nl": "Zachte kaas",
+    "pl": "Soft cheese",
+    "pt": "Queijo de pasta mole",
+    "sk": "Soft cheese",
+    "tr": "Yumuşak Peynir",
+    "zh": "Soft cheese"
+   },
+   "shelfLifeDays": {
+    "freezer": 90,
+    "fridge": 14,
+    "zerodegreezone": 15
+   }
+  },
+  {
+   "cloudId": "1eYaV78lo5EPxlMx4DHhJs",
+   "section": "Baked Goods, Desserts & Snacks",
+   "iconName": "",
+   "position": 13,
+   "names": {
+    "cs": "Desserts",
+    "de": "Dessert",
+    "en": "Desserts",
+    "es": "Postres",
+    "fr": "Desserts",
+    "hu": "Desserts",
+    "it": "Dolci",
+    "ja": "デザート",
+    "ko": "Desserts",
+    "nl": "Desserter",
+    "pl": "Desserts",
+    "pt": "Sobremesas",
+    "sk": "Desserts",
+    "tr": "Tatlılar",
+    "zh": "Desserts"
+   },
+   "shelfLifeDays": {
+    "freezer": 70,
+    "fridge": 10,
+    "zerodegreezone": 11
+   }
+  },
+  {
+   "cloudId": "4MxgVIHuDJGfEzuZaUBE6H",
+   "section": "Baked Goods, Desserts & Snacks",
+   "iconName": "",
+   "position": 14,
+   "names": {
+    "cs": "Bread",
+    "de": "Brot",
+    "en": "Bread",
+    "es": "Pan",
+    "fr": "Pain",
+    "hu": "Bread",
+    "it": "Pane",
+    "ja": "パン",
+    "ko": "Bread",
+    "nl": "Brood",
+    "pl": "Bread",
+    "pt": "Pão",
+    "sk": "Bread",
+    "tr": "Ekmek",
+    "zh": "Bread"
+   },
+   "shelfLifeDays": {
+    "cupboard": 8,
+    "freezer": 40
+   }
+  },
+  {
+   "cloudId": "6W0JMg8GEYtFBpUEVS0JHs",
+   "section": "Vegetables & Fruits",
+   "iconName": "",
+   "position": 15,
+   "names": {
+    "cs": "Legumes",
+    "de": "Hülsenfrüchte",
+    "en": "Legumes",
+    "es": "Café y legumbres",
+    "fr": "Café et légumineuses",
+    "hu": "Legumes",
+    "it": "Caffè e legumi",
+    "ja": "コーヒー豆と豆類",
+    "ko": "Legumes",
+    "nl": "Koffiebonen en peulvruchten",
+    "pl": "Legumes",
+    "pt": "Grãos de café e leguminosas",
+    "sk": "Legumes",
+    "tr": "Kahve çekirdeği ve baklagiller",
+    "zh": "Legumes"
+   },
+   "shelfLifeDays": {
+    "cupboard": 70
+   }
+  },
+  {
+   "cloudId": "2q1XU1zQdIBeuYC1qdvDvC",
+   "section": "Beverages & Drinks",
+   "iconName": "zwillingRapier/Wine",
+   "position": 16,
+   "names": {
+    "cs": "White wine (opened)",
+    "de": "Weißwein (geöffnet)",
+    "en": "White wine (opened)",
+    "es": "Vino blanco (abierto)",
+    "fr": "Vin blanc (ouvert)",
+    "hu": "White wine (opened)",
+    "it": "Vino bianco (aperto)",
+    "ja": "白ワイン",
+    "ko": "White wine (opened)",
+    "nl": "Witte wijn (geopend)",
+    "pl": "White wine (opened)",
+    "pt": "Vinho branco (aberto)",
+    "sk": "White wine (opened)",
+    "tr": "Beyaz şarap (açılmış)",
+    "zh": "White wine (opened)"
+   },
+   "shelfLifeDays": {
+    "fridge": 7
+   }
+  },
+  {
+   "cloudId": "2e5MTa5nED9a9rQ32etff0",
+   "section": "Beverages & Drinks",
+   "iconName": "zwillingRapier/Wine",
+   "position": 17,
+   "names": {
+    "cs": "Red Wine (opened)",
+    "de": "Rotwein (geöffnet)",
+    "en": "Red Wine (opened)",
+    "es": "Vino tinto (abierto)",
+    "fr": "Vin rouge (ouvert)",
+    "hu": "Red Wine (opened)",
+    "it": "Vino rosso (aperto)",
+    "ja": "赤ワイン",
+    "ko": "Red Wine (opened)",
+    "nl": "Rode wijn (geopend)",
+    "pl": "Red Wine (opened)",
+    "pt": "Vinho tinto (aberto)",
+    "sk": "Red Wine (opened)",
+    "tr": "Kırmızı Şarap (açılmış)",
+    "zh": "Red Wine (opened)"
+   },
+   "shelfLifeDays": {
+    "cupboard": 7
+   }
+  }
+ ]
+}
