@@ -31,7 +31,7 @@ the app hides those buttons).
 ## Install
 
 ```bash
-git clone https://github.com/KazeTachinuu/zwilling-remake && cd zwilling-remake
+git clone https://github.com/KazeTachinuu/zwilling-selfhost && cd zwilling-selfhost
 ./install.sh          # idempotent, re-run anytime
 ./check.sh            # verify the deployment is wired correctly
 ```

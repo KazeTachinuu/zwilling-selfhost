@@ -34,7 +34,7 @@ and handling the phone side.
 
 - **[YOU]**
   ```bash
-  git clone https://github.com/KazeTachinuu/zwilling-remake && cd zwilling-remake
+  git clone https://github.com/KazeTachinuu/zwilling-selfhost && cd zwilling-selfhost
   ```
 
 ## 3. Deploy the backend  (USER runs this)
