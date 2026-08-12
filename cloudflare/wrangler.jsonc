@@ -69,6 +69,7 @@
   "vars": {
     "JWT_TTL": "7776000",
     "CORS_ORIGIN": "",
+    "APP_LOCALE": "en",
     "ALLOW_REGISTRATION": "false",
     "ALLOW_FIRST_LOGIN_PROVISION": "false",
     "DEV": "false",

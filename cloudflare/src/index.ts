@@ -104,7 +104,13 @@ export default {
     // streams the current build from R2 (key "_dist/zwilling.apk").
     if (request.method === "GET" && (url.pathname === "/app" || url.pathname === "/app/")) {
       const origin = url.origin;
-      return new Response(APP_PAGE.replaceAll("__ORIGIN__", origin), {
+      const s = APP_STRINGS[(env.APP_LOCALE || "en").toLowerCase()] ?? APP_STRINGS.en;
+      const html = APP_PAGE.replaceAll("__ORIGIN__", origin)
+        .replaceAll("__LANG__", s.lang)
+        .replaceAll("__DESC__", s.desc)
+        .replaceAll("__DOWNLOAD__", s.download)
+        .replaceAll("__NOTE__", s.note);
+      return new Response(html, {
         status: 200,
         headers: {
           ...base,
@@ -191,17 +197,35 @@ export default {
   },
 };
 
+// Install-page copy by locale (set APP_LOCALE; default "en"). The page itself is
+// APP_PAGE below, with __LANG__/__DESC__/__DOWNLOAD__/__NOTE__ filled in per request.
+const APP_STRINGS: Record<string, { lang: string; desc: string; download: string; note: string }> =
+  {
+    en: {
+      lang: "en",
+      desc: "Download the FRESH &amp; SAVE Android app.",
+      download: "Download",
+      note: "Android. Uninstall the official app first.",
+    },
+    fr: {
+      lang: "fr",
+      desc: "Télécharger l'application Android FRESH &amp; SAVE.",
+      download: "Télécharger",
+      note: "Android. Désinstallez d'abord l'app officielle.",
+    },
+  };
+
 // Self-contained install page served at /app. No external resources, theme-aware,
 // mirrors the app's cream/red FRESH & SAVE look. Icons are inline monochrome SVG.
-const APP_PAGE = `<!doctype html><html lang="fr"><head><meta charset="utf-8">
+const APP_PAGE = `<!doctype html><html lang="__LANG__"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FRESH &amp; SAVE</title>
-<meta name="description" content="Télécharger l'application Android FRESH &amp; SAVE.">
+<meta name="description" content="__DESC__">
 <meta name="theme-color" content="#e2231a">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FRESH &amp; SAVE">
 <meta property="og:title" content="FRESH &amp; SAVE">
-<meta property="og:description" content="Télécharger l'application Android FRESH &amp; SAVE.">
+<meta property="og:description" content="__DESC__">
 <meta property="og:url" content="__ORIGIN__/app">
 <meta property="og:image" content="__ORIGIN__/app/og.png">
 <meta property="og:image:width" content="1200">
@@ -209,7 +233,7 @@ const APP_PAGE = `<!doctype html><html lang="fr"><head><meta charset="utf-8">
 <meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FRESH &amp; SAVE">
-<meta name="twitter:description" content="Télécharger l'application Android FRESH &amp; SAVE.">
+<meta name="twitter:description" content="__DESC__">
 <meta name="twitter:image" content="__ORIGIN__/app/og.png">
 <style>
 :root{--bg:#f2ede5;--panel:#fff;--ink:#1b1a17;--sub:#8a847a;--line:#e6ded1;--brand:#e2231a}
@@ -236,7 +260,7 @@ padding:15px;border-radius:14px;transition:opacity .15s}
 </div>
 <a class="dl" href="/app/download" download="zwilling-fresh-and-save.apk">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-Télécharger
+__DOWNLOAD__
 </a>
-<div class="sub">Android. Désinstallez d'abord l'app officielle.</div>
+<div class="sub">__NOTE__</div>
 </main></body></html>`;

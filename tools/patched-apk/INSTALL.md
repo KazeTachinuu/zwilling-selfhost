@@ -2,23 +2,26 @@
 
 The real ZWILLING app, redirected to your own backend. Every backend endpoint
 (`https://{eu,na,ap}[-stage].quillons.zwgaws.io/graphql`) was rewritten to
-`https://your-backend.example.com/graphql`. Rebuilt with apktool, re-signed.
+`https://your-backend.example.com/graphql`, the config splits were merged in,
+and the result was re-signed.
 
-This deliverable is the **3-split set** (base + two config splits, installed
-together). The full universal rebuild (`build.sh`) instead emits a single
-`zwilling-universal.apk`; see the canonical pipeline note below.
+The deliverable is **`zwilling-universal.apk`**: one self-contained APK
+(arm64 + v7a) you install by tapping it. No adb, no developer mode.
 
-## Files (a split install set, install all three together)
-- `com.zwilling.rapier.apk` (base, patched)
-- `config.armeabi_v7a.apk` (native libs split)
-- `config.xhdpi.apk` (resources split)
+## Files
+- `zwilling-universal.apk` (what you install)
+- `com.zwilling.rapier.apk`, `config.armeabi_v7a.apk`, `config.xhdpi.apk` -
+  the original split pieces, kept only as build inputs.
 
-## Install
-Uninstall the Play Store version first (different signature), then:
-```
-adb install-multiple com.zwilling.rapier.apk config.armeabi_v7a.apk config.xhdpi.apk
-```
-(Or copy all three to the phone and use a split-APK installer like SAI.)
+## Install (no adb, no developer mode)
+1. Uninstall the Play Store version first (different signature): on the phone,
+   **Settings -> Apps -> ZWILLING -> Uninstall**.
+2. Get `zwilling-universal.apk` onto the phone (easiest: download it from your
+   backend's `/app` page) and **tap it**. Allow **"install unknown apps"** when
+   prompted, then tap **Install**.
+
+To go back to the real app, uninstall from **Settings -> Apps** the same way and
+reinstall the original store build.
 
 ## It will NOT work until the backend is live
 The app now talks only to `https://your-backend.example.com/graphql`. It needs:
@@ -38,15 +41,11 @@ java -jar uber-apk-signer.jar -a <folder> --ks zwilling.jks --allowResign --over
 ## Rebuild from scratch (reproduce)
 Do not hand-edit smali here. Use the canonical pipeline in `../README.md`:
 
-- **Build A - endpoint repoint** (`../patch_endpoint.py`): byte-patches the
-  endpoint URL in place and re-signs the 3-split set. This is what produced the
-  files above.
-- **Build B - full universal rebuild** (`../apk-build/build.sh` +
-  `../apk-build/patch.py`): full apktool decompile with four smali patches,
-  merged into a single `zwilling-universal.apk`.
+1. **Repoint** the base with `../patch_endpoint.py` (byte-patches the endpoint
+   URL in place, same-byte-length).
+2. **Build** the universal APK with `../apk-build/build.sh` (+ `../apk-build/patch.py`):
+   full apktool decompile with four smali patches, config splits merged into a
+   single `zwilling-universal.apk`, signed with uber-apk-signer.
 
-Both paths sign with uber-apk-signer:
-```
-java -jar uber-apk-signer.jar -a <folder> --allowResign --overwrite
-```
 No cert pinning in the app, so no other changes are needed.
+</content>

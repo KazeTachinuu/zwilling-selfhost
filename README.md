@@ -55,40 +55,37 @@ bun run admin:create-user -- dad@home.local 'a good passphrase' --remote
 page (see "Sharing with your household" below). Family members need no tooling and no
 original APK, only the download.
 
-To build, you need the original ZWILLING app as a split bundle (`base.apk` +
-`config.*.apk`, packaged as an XAPK/APKS): extract it from a device that has it
-installed, or pull it from your Play account. The repo can't ship it, it is
-proprietary. Then pick a path:
+### 1. Get the genuine app (safely)
 
-**A. Repoint only** (no push). Fast, but the host must be **≤ 21 characters**: it
-overwrites the API URL inside a fixed-length slot in the compiled app, so a
-`workers.dev` subdomain is too long. Use build B (below) for any longer host.
+The repo can't ship the ZWILLING app (proprietary), and a random "APK download" site is
+how people get malware. Get it from
+**[APKMirror](https://www.apkmirror.com/?s=com.zwilling.rapier)** (search
+`com.zwilling.rapier`): it verifies every upload is signed by the original developer, so
+a tampered build can't pass. Avoid any other "apk" site.
 
-```bash
-cd tools
-python3 patch_endpoint.py /path/to/com.zwilling.rapier.apk --host YOUR-HOST -o /tmp/base.apk
-java -jar uber-apk-signer.jar -a /tmp --allowResign --overwrite
-adb install-multiple /tmp/base.apk config.armeabi_v7a.apk config.xhdpi.apk
-```
+### 2. Build the universal APK (done once, by you)
 
-**B. Full build** (push + all patches, universal). Needs `java` 17+ and your
-`google-services.json`:
+This repoints the app at your backend, applies the patches, and produces **one**
+self-contained `zwilling-universal.apk` (arm64 + v7a). It is a one-time technical step
+(needs `java` 17+ and your `google-services.json`); the exact commands and prerequisites
+are in [`tools/README.md`](tools/README.md).
 
-```bash
-cd tools/apk-build
-./build.sh /path/to/com.zwilling.rapier.apk /path/to/google-services.json
-```
+### 3. Install (no adb, no developer mode)
 
-Uninstall the Play Store app first (different signature).
+1. Uninstall the Play Store version first (Settings, it has a different signature).
+2. Get the universal APK onto the phone, easiest is to download it from your `/app` page
+   (below), and tap it. Allow "install unknown apps" when prompted. That's it.
 
-**Sharing with your household.** Do not publish the patched APK, it is a derivative
-of a proprietary app. But your own backend can hand it to people you invite: upload
-your build to R2 and it is served, with a branded install page, at `/app`:
+### Share with your household
+
+Do not publish the patched APK, it is a derivative of a proprietary app. Your own backend
+hands it to the people you invite: upload your build to R2 and it is served, with a
+branded install page, at `/app`:
 
 ```bash
 cd cloudflare
-wrangler r2 object put zwilling-photos/_dist/zwilling.apk --file /path/to/your-build.apk --remote
-# your family installs from https://YOUR-BACKEND/app
+wrangler r2 object put zwilling-photos/_dist/zwilling.apk --file /path/to/zwilling-universal.apk --remote
+# your family opens https://YOUR-BACKEND/app and taps Télécharger
 ```
 
 What the patches do:

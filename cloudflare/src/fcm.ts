@@ -147,8 +147,12 @@ export async function sendPush(
 
 // ── daily scan ───────────────────────────────────────────────────────────────
 
-const PUSH_TITLE = "FRESH & SAVE";
-const PUSH_BODY = "Un aliment expire bientôt.";
+// Push copy by locale (set APP_LOCALE; default "en"). Body names no food and no
+// count, just "something expires soon", so item names never leave the DB.
+const PUSH: Record<string, { title: string; body: string }> = {
+  en: { title: "FRESH & SAVE", body: "Something in your kitchen expires soon." },
+  fr: { title: "FRESH & SAVE", body: "Un aliment expire bientôt." },
+};
 
 /**
  * Secret-gated daily reminder scan. For every stored device token, if that token's
@@ -213,10 +217,11 @@ export async function runDailyReminders(env: Env): Promise<void> {
   }
 
   const projectId = env.FCM_PROJECT_ID;
+  const push = PUSH[(env.APP_LOCALE || "en").toLowerCase()] ?? PUSH.en;
   for (const t of tokens) {
     try {
       if (!(await userHasExpiring(t.owner_id))) continue;
-      const res = await sendPush(accessToken, projectId, t.token, PUSH_TITLE, PUSH_BODY);
+      const res = await sendPush(accessToken, projectId, t.token, push.title, push.body);
       if (res.unregistered) {
         await run(
           env,

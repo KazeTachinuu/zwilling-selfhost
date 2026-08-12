@@ -20,6 +20,8 @@ export interface Env {
   CORS_ORIGIN?: string;
   /** Public base URL that photo/upload URLs are built on. Defaults to the prod host. */
   MEDIA_BASE_URL?: string;
+  /** UI locale for the /app install page and push copy ("en" default, "fr"). */
+  APP_LOCALE?: string;
   /** "true" loosens dev-hostile protections (GraphQL introspection, field hints). */
   DEV?: string;
   /** "true" lets an unknown username auto-provision an account (open registration). */

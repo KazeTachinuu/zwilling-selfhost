@@ -44,11 +44,11 @@ TLS) sits on top. See [DEPLOY.md](./DEPLOY.md) for the dashboard half.
   `Did you mean ...` field suggestions are blocked (unless `DEV=true`). Query
   **batching is off**. Every operation is bounded by graphql-armor limiters:
   **max aliases (15)**, **max directives (10)**, **max depth (15)**, **max tokens
-  (2000)** and a **cost limit (5000)** — defanging alias/directive-overloading and
+  (2000)** and a **cost limit (5000)**, defanging alias/directive-overloading and
   other amplification DoS. Thresholds are not leaked in error messages.
 - **POST + JSON only.** In production the `/graphql` endpoint accepts only `POST`
   with `Content-Type: application/json` (405 for other methods, 415 for other
-  content types), and the **GraphiQL IDE / landing page are disabled** — removing
+  content types), and the **GraphiQL IDE / landing page are disabled**, removing
   the GET / form-encoded CSRF surface. `DEV=true` re-enables GraphiQL locally.
 - **Per-owner isolation (IDOR-safe).** Every read and write resolver is scoped by
   `owner_id` taken from the authenticated JWT, so one account can never read or
