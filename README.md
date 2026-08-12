@@ -51,7 +51,14 @@ bun run admin:create-user -- dad@home.local 'a good passphrase' --remote
 
 ## Point the app at your backend
 
-Use your own copy of the base APK. Two ways:
+**One person builds the app once; everyone else just downloads it** from your `/app`
+page (see "Sharing with your household" below). Family members need no tooling and no
+original APK, only the download.
+
+To build, you need the original ZWILLING app as a split bundle (`base.apk` +
+`config.*.apk`, packaged as an XAPK/APKS): extract it from a device that has it
+installed, or pull it from your Play account. The repo can't ship it, it is
+proprietary. Then pick a path:
 
 **A. Repoint only** (no push). Fast, but the host must be **≤ 21 characters**: it
 overwrites the API URL inside a fixed-length slot in the compiled app, so a
