@@ -19,8 +19,8 @@
  * soon". Item names never leave the DB.
  */
 
-import type { Env } from "./types";
 import { all, run } from "./db";
+import type { Env } from "./types";
 
 /** Google service-account JSON (the fields we use). */
 interface ServiceAccount {
@@ -78,8 +78,7 @@ export async function getAccessToken(sa: ServiceAccount): Promise<string> {
     exp: now + 3600,
   };
 
-  const signingInput =
-    base64urlFromString(JSON.stringify(header)) + "." + base64urlFromString(JSON.stringify(claim));
+  const signingInput = `${base64urlFromString(JSON.stringify(header))}.${base64urlFromString(JSON.stringify(claim))}`;
 
   const key = await crypto.subtle.importKey(
     "pkcs8",
@@ -94,7 +93,7 @@ export async function getAccessToken(sa: ServiceAccount): Promise<string> {
     key,
     new TextEncoder().encode(signingInput),
   );
-  const jwt = signingInput + "." + base64urlFromBytes(new Uint8Array(sig));
+  const jwt = `${signingInput}.${base64urlFromBytes(new Uint8Array(sig))}`;
 
   const body = new URLSearchParams({
     grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",

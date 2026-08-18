@@ -108,6 +108,7 @@ function parseOp(doc: string): ParsedOp {
   const vardefs: VarDef[] = [];
   const re = /\$(\w+):\s*([^,]+?)(?=(?:,\s*\$)|$)/g;
   let vm: RegExpExecArray | null;
+  // biome-ignore lint/suspicious/noAssignInExpressions: canonical regex exec loop
   while ((vm = re.exec(varblock)) !== null) {
     vardefs.push({ name: vm[1], type: vm[2].trim() });
   }

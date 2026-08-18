@@ -92,13 +92,19 @@ async function assembleFoodgroups(
   const nameByGroup = new Map<string, Map<string, string>>();
   for (const n of names) {
     let m = nameByGroup.get(n.foodgroup_id);
-    if (!m) nameByGroup.set(n.foodgroup_id, (m = new Map()));
+    if (!m) {
+      m = new Map();
+      nameByGroup.set(n.foodgroup_id, m);
+    }
     m.set(n.locale, n.name);
   }
   const storableByGroup = new Map<string, StorableRow[]>();
   for (const s of storables) {
     let arr = storableByGroup.get(s.foodgroup_id);
-    if (!arr) storableByGroup.set(s.foodgroup_id, (arr = []));
+    if (!arr) {
+      arr = [];
+      storableByGroup.set(s.foodgroup_id, arr);
+    }
     arr.push(s);
   }
 

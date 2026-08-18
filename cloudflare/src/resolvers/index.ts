@@ -24,43 +24,28 @@
  * src/schema.ts and never error.
  */
 
-import { GraphQLError } from "graphql";
-import type { GraphQLResolveInfo } from "graphql";
-import type { GraphQLContext, UserRow } from "../types";
-import { first, run, listZwillingFoodgroups, listCustomFoodgroups, localeForSite } from "../db";
-import { hashPassword, verifyPassword, signToken } from "../auth";
-import {
-  allowRegistration,
-  allowFirstLoginProvision,
-  rateLimitKey,
-  assertNotLockedOut,
-  recordLoginFailure,
-  clearLoginAttempts,
-} from "../security";
-import { boxResolvers } from "./box";
-import { accountResolvers } from "./account";
-import { photosResolvers } from "./photos";
+import type { GraphQLError } from "graphql";
+import { hashPassword, signToken, verifyPassword } from "../auth";
+import { first, listCustomFoodgroups, listZwillingFoodgroups, localeForSite, run } from "../db";
 import { groupsResolvers, memberScope } from "../groups";
+import {
+  allowFirstLoginProvision,
+  allowRegistration,
+  assertNotLockedOut,
+  clearLoginAttempts,
+  rateLimitKey,
+  recordLoginFailure,
+} from "../security";
+import type { GraphQLContext, UserRow } from "../types";
+import { accountResolvers } from "./account";
+import { boxResolvers } from "./box";
+import { photosResolvers } from "./photos";
+import type { ResolverFn, ResolverSlice } from "./shared";
+import { authError, requireUser } from "./shared";
 
-export type ResolverFn = (
-  parent: unknown,
-  args: Record<string, unknown>,
-  ctx: GraphQLContext,
-  info: GraphQLResolveInfo,
-) => unknown;
-
-export type ResolverSlice = Record<string, Record<string, ResolverFn>>;
-
-// ── auth gating helpers (exported for domain slices) ────────────────────────
-export function authError(message = "Authentication required"): GraphQLError {
-  return new GraphQLError(message, { extensions: { code: "AUTHENTICATION_FAILED" } });
-}
-
-/** Return the authenticated user or throw AUTHENTICATION_FAILED. */
-export function requireUser(ctx: GraphQLContext): UserRow {
-  if (!ctx.user) throw authError();
-  return ctx.user;
-}
+export type { ResolverFn, ResolverSlice };
+// Re-exported so existing importers of these from "./index" keep working.
+export { authError, requireUser };
 
 // ── shared login flow (per-account password, first-login-sets-password) ─────
 interface LoginArgs {

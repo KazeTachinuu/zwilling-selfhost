@@ -15,22 +15,22 @@
  */
 
 import { createYoga } from "graphql-yoga";
-import { schema } from "./schema";
 import { userFromRequest } from "./auth";
-import { handleMedia } from "./resolvers/photos";
 import { runDailyReminders } from "./fcm";
+import { handleMedia } from "./resolvers/photos";
+import { schema } from "./schema";
 import {
   corsHeaders,
+  isDev,
+  productionSecretGuard,
   securityHeaders,
   securityPlugins,
-  productionSecretGuard,
-  isDev,
 } from "./security";
 import type { Env, GraphQLContext } from "./types";
 
+export { schema } from "./schema";
 // Re-export the seed routine so it can be driven from tests / scripts.
 export { seedPresets } from "./seed";
-export { schema } from "./schema";
 
 function json(body: unknown, headers: Record<string, string>, status = 200): Response {
   return new Response(JSON.stringify(body), {

@@ -9,11 +9,11 @@
  * is in no group it collapses to `[userId]`, preserving pre-group behavior.
  */
 
-import type { Env } from "./types";
-import type { ResolverSlice } from "./resolvers/index";
-import { requireUser } from "./resolvers/index";
-import { first, all, run } from "./db";
 import { GraphQLError } from "graphql";
+import { all, first, run } from "./db";
+import type { ResolverSlice } from "./resolvers/shared";
+import { requireUser } from "./resolvers/shared";
+import type { Env } from "./types";
 
 function nowSec(): number {
   return Math.floor(Date.now() / 1000);

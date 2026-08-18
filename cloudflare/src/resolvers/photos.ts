@@ -23,10 +23,10 @@
  * ownership-scoped; it returns URLs solely for the authenticated owner's rows.
  */
 
-import type { ResolverSlice } from "./index";
-import { requireUser } from "./index";
 import { first, run } from "../db";
 import type { Env } from "../types";
+import type { ResolverSlice } from "./shared";
+import { requireUser } from "./shared";
 
 // ── file-type ↔ extension / content-type maps ───────────────────────────────
 const EXT: Record<string, string> = { JPEG: "jpg", PNG: "png", WEBP: "webp" };

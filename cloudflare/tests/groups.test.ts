@@ -14,7 +14,7 @@
  *      member deletes the group
  *   6. settings returns isOnboardingCompleted=true by default
  */
-import { SELF, env } from "cloudflare:test";
+import { env, SELF } from "cloudflare:test";
 import { describe, expect, it } from "vitest";
 
 const ENDPOINT = "https://example.com/graphql";

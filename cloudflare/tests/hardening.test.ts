@@ -5,7 +5,7 @@
  * the graphql-armor query-shape limiters, the POST+JSON-only transport rule, the
  * disabled GraphiQL IDE, and the closed first-login-provision flow are all live.
  */
-import { SELF, env } from "cloudflare:test";
+import { env, SELF } from "cloudflare:test";
 import { describe, expect, it } from "vitest";
 import { login } from "../src/resolvers";
 import type { Env, GraphQLContext } from "../src/types";

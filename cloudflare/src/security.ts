@@ -19,16 +19,16 @@
  *     `login_attempts` table and keyed by (username|ip).
  */
 
+import { blockFieldSuggestionsPlugin } from "@escape.tech/graphql-armor-block-field-suggestions";
+import { costLimitPlugin } from "@escape.tech/graphql-armor-cost-limit";
+import { maxAliasesPlugin } from "@escape.tech/graphql-armor-max-aliases";
+import { maxDepthPlugin } from "@escape.tech/graphql-armor-max-depth";
+import { maxDirectivesPlugin } from "@escape.tech/graphql-armor-max-directives";
+import { maxTokensPlugin } from "@escape.tech/graphql-armor-max-tokens";
 import { GraphQLError, NoSchemaIntrospectionCustomRule } from "graphql";
 import type { Plugin } from "graphql-yoga";
-import { maxAliasesPlugin } from "@escape.tech/graphql-armor-max-aliases";
-import { maxDirectivesPlugin } from "@escape.tech/graphql-armor-max-directives";
-import { maxDepthPlugin } from "@escape.tech/graphql-armor-max-depth";
-import { maxTokensPlugin } from "@escape.tech/graphql-armor-max-tokens";
-import { costLimitPlugin } from "@escape.tech/graphql-armor-cost-limit";
-import { blockFieldSuggestionsPlugin } from "@escape.tech/graphql-armor-block-field-suggestions";
-import type { Env } from "./types";
 import { first, run } from "./db";
+import type { Env } from "./types";
 
 // The value shipped in wrangler.jsonc for local development. Production MUST
 // override it with `wrangler secret put JWT_SECRET`.

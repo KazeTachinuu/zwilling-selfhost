@@ -6,6 +6,15 @@
     "indentWidth": 2,
     "lineWidth": 100
   },
+  "files": {
+    "includes": ["**", "!worker-configuration.d.ts", "!bun.lock", "!migrations"]
+  },
   "linter": { "enabled": true },
+  "overrides": [
+    {
+      "includes": ["tests/**", "scripts/**"],
+      "linter": { "rules": { "suspicious": { "noExplicitAny": "off" } } }
+    }
+  ],
   "assist": { "actions": { "source": { "organizeImports": "on" } } }
 }

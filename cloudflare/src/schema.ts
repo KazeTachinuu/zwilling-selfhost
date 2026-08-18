@@ -25,9 +25,11 @@
 
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import {
-  GraphQLScalarType,
-  Kind,
   defaultFieldResolver,
+  type GraphQLResolveInfo,
+  GraphQLScalarType,
+  type GraphQLSchema,
+  type GraphQLType,
   isEnumType,
   isInterfaceType,
   isListType,
@@ -35,9 +37,7 @@ import {
   isObjectType,
   isScalarType,
   isUnionType,
-  type GraphQLResolveInfo,
-  type GraphQLSchema,
-  type GraphQLType,
+  Kind,
 } from "graphql";
 import typeDefs from "../schema.graphql";
 import { resolvers } from "./resolvers";

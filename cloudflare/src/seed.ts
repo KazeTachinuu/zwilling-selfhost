@@ -10,8 +10,8 @@
  *     from the same JSON, so they stay in agreement.
  */
 
-import type { Env } from "./types";
 import shelfLife from "./shelf_life.json";
+import type { Env } from "./types";
 
 interface ShelfLifeGroup {
   cloudId: string;

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * Admin: create or reset a family account WITHOUT email/registration.
  *
@@ -20,8 +21,8 @@
  * ONLY way new accounts appear in production.
  */
 
-import { pbkdf2Sync, randomBytes, randomUUID } from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { pbkdf2Sync, randomBytes, randomUUID } from "node:crypto";
 
 const PBKDF2_ITERATIONS = 100_000;
 const PBKDF2_KEYLEN = 32;
@@ -72,7 +73,7 @@ try {
     stdio: "inherit",
   });
   console.log(`Done. '${sqlEmail}' can now log in with the given password.`);
-} catch (err) {
+} catch (_err) {
   console.error("wrangler d1 execute failed.");
   console.error("You can also run this SQL manually (printed below):\n");
   console.error(sql);

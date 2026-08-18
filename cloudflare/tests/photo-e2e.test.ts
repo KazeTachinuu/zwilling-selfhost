@@ -75,7 +75,7 @@ describe("full QR-container + image-upload round-trip", () => {
     const jpeg = new Uint8Array([
       0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46, 1, 2, 3, 4, 5, 0xff, 0xd9,
     ]);
-    const putRes = await SELF.fetch("https://example.com" + putPath, {
+    const putRes = await SELF.fetch(`https://example.com${putPath}`, {
       method: "PUT",
       headers: { "Content-Type": "image/jpeg" },
       body: jpeg,
@@ -94,7 +94,7 @@ describe("full QR-container + image-upload round-trip", () => {
     const photoUrl = after.data.freshandsave.photo[0].url as string;
 
     // 6. GET the photo back through /media -> exact bytes returned
-    const getRes = await SELF.fetch("https://example.com" + new URL(photoUrl).pathname);
+    const getRes = await SELF.fetch(`https://example.com${new URL(photoUrl).pathname}`);
     expect(getRes.status).toBe(200);
     expect(getRes.headers.get("content-type")).toContain("image/jpeg");
     const got = new Uint8Array(await getRes.arrayBuffer());
@@ -110,7 +110,7 @@ describe("full QR-container + image-upload round-trip", () => {
       token,
     );
     const u2 = new URL(up2.data.requestUploadUrl.url);
-    const boundary = "----ZwillingBoundary" + Math.random().toString(16).slice(2);
+    const boundary = `----ZwillingBoundary${Math.random().toString(16).slice(2)}`;
     const enc = new TextEncoder();
     const parts: Uint8Array[] = [
       enc.encode(
@@ -130,7 +130,7 @@ describe("full QR-container + image-upload round-trip", () => {
       bodyBytes.set(p, off);
       off += p.length;
     }
-    const postRes = await SELF.fetch("https://example.com" + u2.pathname + u2.search, {
+    const postRes = await SELF.fetch(`https://example.com${u2.pathname}${u2.search}`, {
       method: "POST",
       headers: { "Content-Type": `multipart/form-data; boundary=${boundary}` },
       body: bodyBytes,
@@ -146,7 +146,7 @@ describe("full QR-container + image-upload round-trip", () => {
     const got2 = new Uint8Array(
       await (
         await SELF.fetch(
-          "https://example.com" + new URL(after2.data.freshandsave.photo[0].url).pathname,
+          `https://example.com${new URL(after2.data.freshandsave.photo[0].url).pathname}`,
         )
       ).arrayBuffer(),
     );
@@ -165,7 +165,7 @@ describe("full QR-container + image-upload round-trip", () => {
       token,
     );
     expect(gone.data.freshandsave.photo ?? []).toHaveLength(0);
-    const get404 = await SELF.fetch("https://example.com" + new URL(photoUrl).pathname);
+    const get404 = await SELF.fetch(`https://example.com${new URL(photoUrl).pathname}`);
     expect(get404.status).toBe(404);
   });
 });

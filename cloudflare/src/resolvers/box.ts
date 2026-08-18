@@ -5,13 +5,13 @@
  * by `owner_id` so one user can never read or mutate another's data.
  */
 
-import type { ResolverSlice, ResolverFn } from "./index";
-import { requireUser } from "./index";
 import { GraphQLError } from "graphql";
-import { first, all, run, sha256b64, loadFoodgroupById } from "../db";
+import { all, first, loadFoodgroupById, run, sha256b64 } from "../db";
+import { memberScope } from "../groups";
 import type { Env } from "../types";
 import { deletePhoto } from "./photos";
-import { memberScope } from "../groups";
+import type { ResolverFn, ResolverSlice } from "./shared";
+import { requireUser } from "./shared";
 
 const ALLOWED_LOCATIONS = new Set(["cupboard", "freezer", "fridge", "zerodegreezone"]);
 
@@ -149,7 +149,7 @@ async function listingHash(items: Record<string, unknown>[]): Promise<string> {
 
 /** Faithful port of Python's dict.get(key, default): present-but-null keeps null. */
 function pick<T>(obj: Record<string, unknown> | undefined, key: string, fallback: T): unknown {
-  if (obj && Object.prototype.hasOwnProperty.call(obj, key)) return obj[key];
+  if (obj && Object.hasOwn(obj, key)) return obj[key];
   return fallback;
 }
 
@@ -250,7 +250,7 @@ export const boxResolvers: ResolverSlice = {
       const storable =
         (args.storable as { location?: string; icon?: string; days?: number }[]) ?? [];
       for (const s of storable) {
-        if (s && s.location && ALLOWED_LOCATIONS.has(s.location)) {
+        if (s?.location && ALLOWED_LOCATIONS.has(s.location)) {
           await run(
             ctx.env,
             "INSERT INTO foodgroup_storable (foodgroup_id,location,icon,days) VALUES (?,?,?,?)",
@@ -352,7 +352,7 @@ export const boxResolvers: ResolverSlice = {
         sets.push(`${col}=?`);
         vals.push(v);
       };
-      const has = (k: string) => Object.prototype.hasOwnProperty.call(c, k);
+      const has = (k: string) => Object.hasOwn(c, k);
 
       if (has("name")) st("name", c.name);
       if (has("description")) st("description", c.description);

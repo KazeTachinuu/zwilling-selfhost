@@ -7,11 +7,11 @@
  * never leak account existence.
  */
 
-import type { ResolverSlice } from "./index";
-import { requireUser } from "./index";
-import { first, all, run, sha256b64 } from "../db";
+import { all, first, run, sha256b64 } from "../db";
 import { permanentJoinHash } from "../groups";
 import type { Env, UserRow } from "../types";
+import type { ResolverSlice } from "./shared";
+import { requireUser } from "./shared";
 
 // ── deterministic JSON (sorted keys), for opaque cache-key hashes ────────────
 function stableStringify(value: unknown): string {
@@ -52,7 +52,7 @@ async function buildGroups(env: Env, user: UserRow): Promise<Record<string, unkn
     const members = memberRows.map((m) => ({
       userId: m.user_id,
       owner: m.is_owner === 1,
-      name: (m.name && m.name.trim()) || m.email.split("@")[0],
+      name: m.name?.trim() || m.email.split("@")[0],
       photo: [] as unknown[],
     }));
     out.push({
